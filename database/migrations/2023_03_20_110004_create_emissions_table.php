@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('emissions', function (Blueprint $table) {
             $table->id();
-            $table->int('aircraft_type_id');
+            $table->integer('aircraft_type_id');
             $table->float('co2_g_per_km');
             $table->float('noise_db');
             $table->timestamps();
