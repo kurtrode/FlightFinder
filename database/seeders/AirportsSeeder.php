@@ -24,8 +24,8 @@ class AirportsSeeder extends Seeder
         foreach ($data as $item){
             $airport = new Airport;
             $airport->name = $item->name;
-            $airport->iata_code ? $airport->iata_code = $item->iata_code : $airport->iata_code="";
-            $airport->icao_code ? $airport->icao_code = $item->icao_code : $airport->icao_code="";
+            if (isset($item->iata_code))$airport->iata_code = $item->iata_code;
+            if (isset($item->icao_code))$airport->icao_code = $item->icao_code;
             $airport->lat = $item->lat;
             $airport->lng = $item->lng;
             $airport->country_code = $item->country_code;
