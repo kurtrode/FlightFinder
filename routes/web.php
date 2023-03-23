@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\IndexController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+
+Route::post('/register', [RegisterController::class, 'register'])->name('register');
+Route::post('/login', [RegisterController::class, 'login'])->name('login');
+
+Route::get('/{path?}', [IndexController::class, 'index'])->where('path', '.*')->name('homepage');

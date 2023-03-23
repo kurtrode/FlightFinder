@@ -1,34 +1,61 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useState, useEffect } from 'react'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Link } from "react-router-dom";
 import './App.css'
+import Registration from './Registration'
+import Login from './Login'
+import Main from './Main'
+import Navigation from './Navigation'
+import AboutUs from './AboutUs'
+import Footer from "./Footer";
+import UserContext from './UserContext';
+import Homepage from "./Homepage";
 
 function App() {
-  const [count, setCount] = useState(0)
 
-  return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
+  // const [currentForm, setCurrentForm] = useState('login');
+  const [user, setUser] = useState(null);
+
+  const formSwitch = (formName) => {
+    setCurrentForm(formName)
+  }
+
+  const getUserInformation = async () => {
+    const response = await fetch('/api/user');
+    
+    if (response.status === 200) {
+      //user is logged-in
+      const data = await response.json();
+      setUser(data);
+    } else {
+      // user is not logged-in
+      setUser(false);
+  }
+}
+
+// {
+//   currentForm === 'login' ? <Login formSwitch={formSwitch}/> : <Registration formSwitch={formSwitch} />
+// }
+
+ useEffect(() => {
+        getUserInformation();
+    }, [])
+
+    return (
+      <UserContext.Provider value={ { user, setUser, getUserInformation } }>
+        <BrowserRouter>
+
+          < Navigation user={user}/>
+
+        < Homepage />
+
+          < Main user={user} />
+          < Footer user={user} />
+
+
+        </BrowserRouter>
+      </UserContext.Provider>
+        
   )
 }
 
