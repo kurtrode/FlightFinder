@@ -1,0 +1,38 @@
+/* body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+} */
+
+/* .form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: beige;
+    color: black;
+    height: 70vh;
+    width: 45vw;
+}
+
+.reg-form {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.reg-form__input {
+    margin: 0.5rem 0;
+}
+
+.label {
+    width: 100%;
+    text-align: left;
+    padding: 0.25rem 0;
+    color: blue;
+} */
