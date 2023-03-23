@@ -10,6 +10,7 @@ import AboutUs from './AboutUs'
 import Footer from "./Footer";
 import UserContext from './UserContext';
 import Homepage from "./Homepage";
+import WeatherAtt from "./WeatherAtt";
 
 function App() {
 
@@ -45,9 +46,11 @@ function App() {
       <UserContext.Provider value={ { user, setUser, getUserInformation } }>
         <BrowserRouter>
 
+          < WeatherAtt />
+
           < Navigation user={user}/>
 
-        < Homepage />
+          < Homepage />
 
           < Main user={user} />
           < Footer user={user} />
