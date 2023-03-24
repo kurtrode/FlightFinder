@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react'
 import UserContext from './UserContext';
 import { Link } from "react-router-dom";
+import axios from 'axios';
 
 
 export default function Login(props) {
@@ -16,26 +17,28 @@ export default function Login(props) {
 
         event.preventDefault()
 
-        const response = await fetch('/login', {
-            method: 'POST',
-            body: JSON.stringify(values),
-            headers: {
-                'Accept': 'application/json',
-                'Content-type': 'application/json',
-                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-            }
-        });
+        // const response = await fetch('/login', {
+        //     method: 'POST',
+        //     body: JSON.stringify(values),
+        //     headers: {
+        //         'Content-type': 'application/json',
+        //         'Accept': 'application/json',
+        //         'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+        //     }
+        // });
 
-        const response_data = await response.json();
+        // const response_data = await response.json();
+
+        const response = await axios.post('/login',values)
 
          if (Math.floor(response.status / 100) !== 2) {
             switch (response.status) {
                 case 422:
                     // handle validation errors here
-                    console.log('VALIDATION FAILED:', response_data.errors);
+                    console.log('VALIDATION FAILED:', response.errors);
                     break;
                 default:
-                    console.log('UNKNOWN ERROR', response_data);
+                    console.log('UNKNOWN ERROR', response.data);
                     break;
             }
         };
@@ -58,6 +61,7 @@ export default function Login(props) {
         <h2>Login</h2>
 
          <form onSubmit={ formHandleSubmit } className="log-form" method="post">
+
 
             <label className="label" htmlFor="email">Email</label>
             <input 
