@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('aircraft_types', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->int('max_passengers');
+            $table->integer('max_passengers');
             $table->float('max_range_km');
             $table->timestamps();
         });
