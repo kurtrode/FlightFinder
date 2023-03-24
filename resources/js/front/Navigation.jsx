@@ -22,17 +22,17 @@ export default function Navigation({user}) {
 
 
             <div>
-                 <Link to="/register" > Register </Link>             
-                 <Link to="/login" > Login </Link>        
+                 {/* <Link to="/register" > Register </Link>             
+                 <Link to="/login" > Login </Link>         */}
                   {/* should be displayed if user is not loged  */}
-{/* 
+
                   {
                                       user === false
                                           ? (
                                               <>
                                                   <Link to="/register">Registration</Link>
                                                   <Link to="/login">Login</Link>
-                                                  <Link to="/logout" >Logout </Link>
+                                
                                               </>
                                           )
                                           : ''
@@ -42,7 +42,7 @@ export default function Navigation({user}) {
                                       user
                                           ? <Link to="/logout"> Logout </Link>
                                           : ''
-                  } */}
+                  }
            
             </div>
 

@@ -11,22 +11,24 @@ import Footer from "./Footer";
 import UserContext from './UserContext';
 import Homepage from "./Homepage";
 import WeatherAtt from "./WeatherAtt";
+import axios from 'axios';
+
 
 function App() {
 
   // const [currentForm, setCurrentForm] = useState('login');
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(false);
 
   const formSwitch = (formName) => {
     setCurrentForm(formName)
   }
 
   const getUserInformation = async () => {
-    const response = await fetch('/api/user');
+    const response = await axios.get('/api/user');
     
     if (response.status === 200) {
       //user is logged-in
-      const data = await response.json();
+      const data = await response.data;
       setUser(data);
     } else {
       // user is not logged-in

@@ -1,5 +1,7 @@
 import React from 'react'
 import UserContext from './UserContext';
+import { useContext, useEffect } from "react";
+import axios from 'axios'
 
 export default function Logout() {
 
@@ -7,13 +9,13 @@ export default function Logout() {
 
     const logout = async () => {
 
-        const response = fetch('/logout', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-type': 'application/json',
-                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-            }
+        const response = await axios.post('/logout', {
+            // method: 'POST',
+            // headers: {
+            //     'Accept': 'application/json',
+            //     'Content-type': 'application/json',
+            //     'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+            // }
         })
 
         if (response.status === 204) {
