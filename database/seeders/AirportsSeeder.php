@@ -30,7 +30,6 @@ class AirportsSeeder extends Seeder
             $airport->lng = $item->lng;
             $airport->country_code = $item->country_code;
             $airport->save();
-
         }
     }
 }
