@@ -5,6 +5,7 @@ import Login from './Login'
 import AboutUs from './AboutUs'
 import Homepage from './Homepage'
 import Logout from './Logout'
+import FlightFinder from './FlightFinder';
 
 export default function Main({user}) {
   return (
@@ -17,6 +18,7 @@ export default function Main({user}) {
         <Route path='/aboutus' element={ <AboutUs />} />
         
    
+        <Route path="/flight" element={ <FlightFinder /> } />
     </Routes>
   )
 }
