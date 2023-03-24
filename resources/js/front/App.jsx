@@ -22,7 +22,11 @@ function App() {
   }
 
   const getUserInformation = async () => {
-    const response = await fetch('/api/user');
+    const response = await fetch('/api/user', {
+      headers: {
+        'Accept': 'application/json'
+      }
+    });
     
     if (response.status === 200) {
       //user is logged-in
