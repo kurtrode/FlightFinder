@@ -7,7 +7,7 @@ export default function Navigation({user}) {
 
   return (
     <>
-
+    
 
 
 
