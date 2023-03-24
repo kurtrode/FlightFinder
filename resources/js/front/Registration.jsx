@@ -10,9 +10,9 @@ export default function Registration(props) {
 
 
     const [values, setValues] = useState({
+        first_name: '',
         email: '',
-        name: '',
-        lastName: '',
+        last_name: '',
         password: '',
         password_confirmation: ''
     })
@@ -73,8 +73,8 @@ export default function Registration(props) {
                 className="reg-form__input" 
                 type="text" 
                 id="name" 
-                name="name" 
-                value={ values.name }
+                name="first_name" 
+                value={ values.first_name }
                 onChange={ handleChange }
             />
 
@@ -83,8 +83,8 @@ export default function Registration(props) {
                 className="reg-form__input" 
                 type="text" 
                 id="lastName" 
-                name="lastName" 
-                value={ values.lastName } 
+                name="last_name" 
+                value={ values.last_name } 
                 onChange={ handleChange }
             />
 
