@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::post('/register', [RegisterController::class, 'register'])->name('register');
-Route::post('/login', [RegisterController::class, 'login'])->name('login');
+// Route::post('/register', [RegisterController::class, 'register'])->name('register');
+// Route::post('/login', [RegisterController::class, 'login'])->name('login');
 
 Route::get('/{path?}', [IndexController::class, 'index'])->where('path', '.*')->name('homepage');
