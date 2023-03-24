@@ -14,6 +14,8 @@ export default function Main({user}) {
         <Route path="/register" element={ <Registration /> } />
         <Route path="/login" element={ <Login /> } />
         <Route path="/logout" element={ <Logout /> } />
+        <Route path='/aboutus' element={ <AboutUs />} />
+        
    
     </Routes>
   )
