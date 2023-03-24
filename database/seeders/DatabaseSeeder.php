@@ -14,7 +14,9 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             AirportsSeeder::class,
-            AirlineSeeder::class
+            AirlineSeeder::class,
+            CitiesSeeder::class,
+            CountriesSeeder::class
         ]);
         // \App\Models\User::factory(10)->create();
 
