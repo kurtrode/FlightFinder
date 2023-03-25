@@ -16,9 +16,6 @@ return new class extends Migration
             $table->integer('aircraft_type_id')->default(0)->change();
             $table->float('co2_g_per_km')->default(0)->change();
             $table->float('noise_db')->default(0)->change();
-            $table->string('UID No');
-            $table->int('GSDB No');
-            $table->string('Manufacturer');
         });
     }
 
