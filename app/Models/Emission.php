@@ -9,7 +9,7 @@ class Emission extends Model
 {
     use HasFactory;
     public function aircraft_types(){
-        return $this->belongsTo(Aircraft_Type::class);
+        return $this->belongsTo(AircraftType::class);
     }
     public function emissions(){
         return $this->hasMany(Flight::class);
