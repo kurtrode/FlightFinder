@@ -17,7 +17,8 @@ class DatabaseSeeder extends Seeder
             AirlineSeeder::class,
             CitiesSeeder::class,
             CountriesSeeder::class,
-            EmissionsSeeder::class
+            EmissionsSeeder::class,
+            AircraftTypesSeeder::class
         ]);
         // \App\Models\User::factory(10)->create();
 
