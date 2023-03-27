@@ -24,15 +24,7 @@ function App() {
   }
 
   const getUserInformation = async () => {
-<<<<<<< HEAD
-    const response = await fetch('/api/user', {
-      headers: {
-        'Accept': 'application/json'
-      }
-    });
-=======
     const response = await axios.get('/api/user');
->>>>>>> main
     
     if (response.status === 200) {
       //user is logged-in
@@ -63,8 +55,10 @@ function App() {
           < Homepage />
 
           < Main user={user} />
-          < Footer user={user} />
 
+          <div className='footer_cont'>
+          < Footer user={user} />
+          </div>
 
         </BrowserRouter>
       </UserContext.Provider>
