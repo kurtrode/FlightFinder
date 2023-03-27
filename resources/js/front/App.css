@@ -63,3 +63,7 @@ body {
   border: none;
   outline: none;
 }
+
+.footer-distributed{
+  position: bottom;
+}

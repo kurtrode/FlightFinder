@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from "react-router-dom";
+import './Navigation.css';
 
 export default function Navigation({user}) {
 
@@ -9,16 +10,20 @@ export default function Navigation({user}) {
     <>
     
 
-
-
     <nav>
             
-            <div>
-                <Link to="/" > Homepage</Link>
+            <div className='a'>
+                <Link to="/" > Home</Link>
                 <Link to="/maps" > MAP/S</Link>
-                <Link to="/destinations" > Destinations</Link>      {/* if are managed to complete MVC */}
-                <Link to="/flights" > Flights</Link>
+                <Link to="/destinations" > Destinations</Link>      
+                <Link to="/flight" > Flight</Link>           
+                             
+                <div class="animation start-home"></div>
+                
+
             </div>
+
+
 
 
             <div>

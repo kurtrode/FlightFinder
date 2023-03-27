@@ -55,8 +55,10 @@ function App() {
           < Homepage />
 
           < Main user={user} />
-          < Footer user={user} />
 
+          <div className='footer_cont'>
+          < Footer user={user} />
+          </div>
 
         </BrowserRouter>
       </UserContext.Provider>
