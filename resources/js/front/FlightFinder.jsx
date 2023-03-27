@@ -44,7 +44,7 @@ return(
             {   
                 airlines.filter((airline) => {
                     return (airline.flag == searchQuery || airline.aircraft_icao == searchQuery)
-                } ).filter((airline, index) => (index < 10)).map((airline, index)=>
+                } ).filter((airline, index) => (index < 5)).map((airline, index)=>
                 <ul
                     key= { index }
                     >

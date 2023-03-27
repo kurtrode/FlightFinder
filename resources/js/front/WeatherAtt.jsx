@@ -34,11 +34,11 @@ export default function WeatherAtt() {
     <div className="main-container">
 
         <div className="search-container" >
-            <input
+            {/* <input
                  type="text"
                  value={city}
                  onChange={event => setCity(event.target.value)}
-                 onKeyPress={searchLocation} />
+                 onKeyPress={searchLocation} /> */}
         </div>
 
         <div className="weather-container">

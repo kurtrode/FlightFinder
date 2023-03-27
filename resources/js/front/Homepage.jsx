@@ -10,12 +10,12 @@ export default function Homepage(user) {
 
 
         <div>
-            <span> HERE SHOULD BE FLIGHT SEARCH COMPONENT / AND CALENDARS </span>
+            <span> Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque voluptate debitis nihil minus esse adipisci id numquam et, sunt iste aut corporis eius fugit asperiores obcaecati. Quos recusandae asperiores repudiandae. </span>
         </div>
 
 
         <div>
-            <span> HERE WE WANT TO DISPlAY WEATHER BASED ON USER LOCATION</span>    {/* if are managed to complete MVC */}
+            <span> HERE WE WANT TO DISPlAY WEATHER BASED ON USER LOCATION</span>    
         </div>
 
 
@@ -24,6 +24,7 @@ export default function Homepage(user) {
         </div>
 
 
+    
 
     </div>
   )
