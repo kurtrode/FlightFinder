@@ -19,6 +19,7 @@ function App() {
   // const [currentForm, setCurrentForm] = useState('login');
   const [user, setUser] = useState(false);
 
+
   const formSwitch = (formName) => {
     setCurrentForm(formName)
   }
@@ -45,7 +46,7 @@ function App() {
     }, [])
 
     return (
-      <UserContext.Provider value={ { user, setUser, getUserInformation } }>
+      <UserContext.Provider value={ { user, setUser, getUserInformation} }>
         <BrowserRouter>
 
           < WeatherAtt />

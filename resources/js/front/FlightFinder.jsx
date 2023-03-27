@@ -5,19 +5,19 @@ import { useEffect, useState } from "react";
 export default function FlightFinder (){
 
        
-        const [inputValue, setInputValue] = useState("");
+    const [searchQuery, setSearchQuery] = useState("");
         const [airlines, setAirlines] = useState([]);
        
-        const [searchQuery, setSearchQuery] = useState("");
+        const [inputValue, setInputValue] = useState("");
 
     async function fetchData() {
         
-        const response = await fetch(`https://airlabs.co/api/v9/flights?api_key=add866a8-32ef-4e81-b5a4-145620e6da18`);    
+        const response = await fetch(`/api/fetch-flights?inputValue=${inputValue}`);    
 
         const data = await response.json();
         console.log(data);
 
-        setAirlines(data.response);
+        setAirlines(data);
         // console.log(airlines);
 
                
@@ -29,7 +29,7 @@ export default function FlightFinder (){
     
     useEffect(()=>{
         fetchData();
-    }, [])
+    }, [searchQuery])
 
  
 
@@ -43,7 +43,7 @@ return(
 
             {   
                 airlines.filter((airline) => {
-                    return (airline.flag == searchQuery || airline.aircraft_icao == searchQuery)
+                    return (airline.flag == searchQuery || airline.aircraft_icao == searchQuery || airline.departure_airport ? airline.departure_airport.icao_code == searchQuery : null)
                 } ).filter((airline, index) => (index < 5)).map((airline, index)=>
                 <ul
                     key= { index }

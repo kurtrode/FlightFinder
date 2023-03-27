@@ -12,7 +12,8 @@ class FlightSearchController extends Controller
 {
     public function fetchFlightsData(Request $request)
     {
-        $searchString = 'A320';
+        $searchString = $request->input('inputValue');
+        
         // fetch the flights data from API
         $response = Http::get('https://airlabs.co/api/v9/flights?api_key=add866a8-32ef-4e81-b5a4-145620e6da18');
 
@@ -34,7 +35,7 @@ class FlightSearchController extends Controller
 
             // you can controll which of the flights are returned to FE by including
             // conditions here which have to be met in order for the model to be created
-            if (($flight['aircraft_icao'] ?? '') == $searchString) {
+            if (($flight['departure_airport']['icao_code'] ?? '') == $searchString) {
                 $flightsArray[] = new FetchedFlight($flight);
             }
         }
