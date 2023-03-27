@@ -13,7 +13,7 @@ class Flight extends Model
         return $this->belongsTo(User::class);
     }
     public function aircraft_types(){
-        return $this->belongsTo(Aircraft_Type::class);
+        return $this->belongsTo(AircraftType::class);
     }
     public function emissions(){
         return $this->belongsTo(Emission::class);
