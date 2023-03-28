@@ -1,10 +1,13 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect, useContext } from 'react';
 import UserContext from './UserContext';
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
+import { useNavigate } from 'react-router';
 import axios from 'axios';
 
 
 export default function Login(props) {
+
+    const navigate = useNavigate();
 
     const { getUserInformation } = useContext(UserContext);
 
@@ -29,25 +32,31 @@ export default function Login(props) {
 
         // const response_data = await response.json();
 
-        const response = await axios.post('/login',values)
-
-         if (Math.floor(response.status / 100) !== 2) {
-            switch (response.status) {
+         try {
+            // make the AJAX request
+            const response = await axios.post('/login', values);
+            // get the (already JSON-parsed) response data
+            const response_data = response.data;
+        } catch (error) {
+            // if the response code is not 2xx (success)
+            switch (error.response.status) {
                 case 422:
                     // handle validation errors here
-                    console.log('VALIDATION FAILED:', response.errors);
+                    console.log('VALIDATION FAILED:', error.response.data.errors);
                     break;
-                default:
-                    console.log('UNKNOWN ERROR', response.data);
+                case 500:
+                    console.log('UNKNOWN ERROR', error.response.data);
                     break;
             }
-        };
+        }
 
         getUserInformation();
 
+        navigate('/')
+        
     }
 
-    const handleChange = (event) => {
+   const handleChange = (event) => {
         setValues(previous_values => {
             return ({...previous_values,
                 [event.target.name]: event.target.value
@@ -60,7 +69,7 @@ export default function Login(props) {
 
         <h2>Login</h2>
 
-         <form onSubmit={ formHandleSubmit } className="log-form" method="post">
+         <form action="/login" onSubmit={ formHandleSubmit } className="log-form" method="post">
 
 
             <label className="label" htmlFor="email">Email</label>
@@ -87,6 +96,15 @@ export default function Login(props) {
 
        <Link to="/register"> <button className="button switch">Don't have an accout? Register here </button></Link>
         </form>
+
+        {/* {
+            user === false ?
+            
+            
+            
+            < Navigate to="/homepage" /> : < Navigate to="register" />
+
+        } */}
         
 
     </div>

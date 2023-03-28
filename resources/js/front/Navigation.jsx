@@ -1,6 +1,8 @@
 import React from 'react'
 import { Link } from "react-router-dom";
-import './Navigation.css';
+
+import Logout from './Logout'
+
 
 export default function Navigation({user}) {
 
@@ -8,7 +10,6 @@ export default function Navigation({user}) {
 
   return (
     <>
-    
 
     <nav>
             
@@ -24,43 +25,30 @@ export default function Navigation({user}) {
             </div>
 
 
-
-
             <div>
-                 {/* <Link to="/register" > Register </Link>             
-                 <Link to="/login" > Login </Link>         */}
-                  {/* should be displayed if user is not loged  */}
-
+        
                   {
-                                      user === false
-                                          ? (
-                                              <>
-                                                  <Link to="/register">Registration</Link>
-                                                  <Link to="/login">Login</Link>
-                                
-                                              </>
-                                          )
-                                          : ''
-                                  }
+                    user === false
+                  ? (
+                <>
 
-                                  {
-                                      user
-                                          ? <Link to="/logout"> Logout </Link>
-                                          : ''
-                  }
+                <Link to="/register">Registration</Link>
+                <Link to="/login">Login</Link>
+                                
+                </>
+                 )
+                 : ''
+                }
+
+                {
+                user
+                ? < Logout />
+                : ''
+                }
            
             </div>
 
     </nav>
-
-
-
-
-
-   
-    
-
-
     </>
   )
 }

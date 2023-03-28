@@ -1,13 +1,13 @@
 import { useState, useEffect, useContext } from 'react';
 import { Link } from "react-router-dom";
 import UserContext from "./UserContext"
+import { useNavigate } from 'react-router';
 
 export default function Registration(props) {
 
+    const navigate = useNavigate();
+
     const { getUserInformation } = useContext(UserContext);
-
-    // const [redirect, setRedirect] = useState(false)
-
 
     const [values, setValues] = useState({
         first_name: '',
@@ -49,6 +49,8 @@ export default function Registration(props) {
 
         getUserInformation();
 
+        navigate('/')
+
     }
 
     const handleChange = (event) => {
@@ -59,14 +61,12 @@ export default function Registration(props) {
         });
     }
 
-
-
   return (
     <div className="form-container" >
 
         <h2>Register</h2>
 
-        <form onSubmit={ formHandleSubmit } className="reg-form" method="post">
+        <form action="/register" onSubmit={ formHandleSubmit } className="reg-form" method="post">
 
             <label className="label" htmlFor="name">First Name:</label>
             <input 
