@@ -37,11 +37,16 @@ export default function FlightFinder (){
 return(
     <div className="Flight">
         <h1>Flight status</h1>
-        <input type="text"  className="Search" onChange={handleChange}   />
-
+        <input type="text"  Placeholder="Flight #"className="Search" onChange={handleChange}   />
         <button onClick={() => {setSearchQuery(inputValue),console.log(inputValue)}}>SearchBar</button>
        
+        {/* <input type="text"  Placeholder="Depature airport"className="Search" onChange={handleChange}   />
+        <button onClick={() => {setSearchQuery(inputValue),console.log(inputValue)}}>SearchBar</button>
 
+        <input type="text"  Placeholder="Arrival airport"className="Search" onChange={handleChange}   />
+        <button onClick={() => {setSearchQuery(inputValue),console.log(inputValue)}}>SearchBar</button>     */}
+
+ 
             {   
                 airlines.filter((airline) => {
                     return (airline.flag == searchQuery || airline.aircraft_icao == searchQuery || airline.departure_airport ? airline.departure_airport.icao_code == searchQuery : null)
