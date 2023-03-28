@@ -12,10 +12,10 @@ class FlightSearchController extends Controller
 {
     public function fetchFlightsData(Request $request)
     {
-        $searchString = $request->input('inputValue');
+        $searchString = $request->input('searchQuery');
         
         // fetch the flights data from API
-        $response = Http::get('https://airlabs.co/api/v9/flights?api_key=add866a8-32ef-4e81-b5a4-145620e6da18');
+        $response = Http::get("https://airlabs.co/api/v9/flights?api_key=add866a8-32ef-4e81-b5a4-145620e6da18&dep_icao=".$searchString);
 
         // read the response property of response as JSON (turns into array of associative arrays)
         $flightArrays = $response->json('response');
@@ -55,4 +55,16 @@ class FlightSearchController extends Controller
         $flights->load('airlineName:icao_code,name');
         return $flights;
     }
+    // public function emissions(Request $request){
+    //     $encodedParams = new URLSearchParams();
+    //     $encodedParams.append("iata_airport_from", "LHR");
+    //     $encodedParams.append("iata_airport_to", "LAX");
+    //     $encodedParams.append("number_of_passengers", "1");
+    //     $response = Http::get('https://airlabs.co/api/v9/flights?api_key=add866a8-32ef-4e81-b5a4-145620e6da18',headers: {
+    //         'content-type': 'application/x-www-form-urlencoded',
+    //         Authorization: 'Bearer fQ98oU704xFvsnXcQLVDbpeCJHPglG1DcxiMLKfpeNEMGumlbzVf1lCI6ZBx',
+    //         'X-RapidAPI-Key': 'ff11e50708msh8107b98312c4760p171694jsn7e6cc0d3480f',
+    //         'X-RapidAPI-Host': 'carbonsutra1.p.rapidapi.com'
+    //       },data: encodedParams);
+    //  }
 }

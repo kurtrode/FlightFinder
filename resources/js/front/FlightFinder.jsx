@@ -12,7 +12,7 @@ export default function FlightFinder (){
 
     async function fetchData() {
         
-        const response = await fetch(`/api/fetch-flights?inputValue=${inputValue}`);    
+        const response = await fetch(`/api/fetch-flights/${searchQuery}`);    
 
         const data = await response.json();
         console.log(data);
@@ -24,7 +24,8 @@ export default function FlightFinder (){
     }
 
     const handleChange = (e) => {
-        setInputValue(e.target.value)  
+        setInputValue(e.target.value) 
+        console.log(inputValue) 
     }
     
     useEffect(()=>{
@@ -38,7 +39,7 @@ return(
         <h1>Flight status</h1>
         <input type="text"  className="Search" onChange={handleChange}   />
 
-        <button onClick={() => {setSearchQuery(inputValue)}}>SearchBar</button>
+        <button onClick={() => {setSearchQuery(inputValue),console.log(searchQuery)}}>SearchBar</button>
        
 
             {   

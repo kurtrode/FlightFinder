@@ -12,6 +12,7 @@ import UserContext from './UserContext';
 import Homepage from "./Homepage";
 import WeatherAtt from "./WeatherAtt";
 import axios from 'axios';
+import NearbyCities from "./NearbyCities";
 
 
 function App() {
@@ -54,6 +55,7 @@ function App() {
           < Navigation user={user}/>
 
           < Homepage />
+          
 
           < Main user={user} />
 
