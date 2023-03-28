@@ -1,5 +1,6 @@
 import React from 'react'
 import Navigation from './Navigation'
+import NearbyCities from './NearbyCities'
 
 
 
@@ -22,6 +23,7 @@ export default function Homepage(user) {
         <div>
             <span> HERE SHOULD BE DISPLAYED CAROUSEL COMPONENT</span>
         </div>
+        <NearbyCities/>
 
 
     

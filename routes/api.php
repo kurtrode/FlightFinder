@@ -19,5 +19,6 @@ use App\Http\Controllers\FlightSearchController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::get('/fetch-flights',[FlightSearchController::class, 'fetchFlightsData']);
+Route::get('/fetch-flights/{searchQuery}',[FlightSearchController::class, 'fetchFlightsData']);
+Route::get('/emissions',[FlightSearchController::class, 'emisisons']);
 // Route::post('/login', [RegisterController::class, 'login'])->name('login');

@@ -5,31 +5,32 @@ import { useEffect, useState } from "react";
 export default function FlightFinder (){
 
        
-        const [inputValue, setInputValue] = useState("");
+    const [searchQuery, setSearchQuery] = useState("");
         const [airlines, setAirlines] = useState([]);
        
-        const [searchQuery, setSearchQuery] = useState("");
+        const [inputValue, setInputValue] = useState("");
 
     async function fetchData() {
         
-        const response = await fetch(`https://airlabs.co/api/v9/flights?api_key=add866a8-32ef-4e81-b5a4-145620e6da18`);    
+        const response = await fetch(`/api/fetch-flights/${searchQuery}`);    
 
         const data = await response.json();
         console.log(data);
 
-        setAirlines(data.response);
+        setAirlines(data);
         // console.log(airlines);
 
                
     }
 
     const handleChange = (e) => {
-        setInputValue(e.target.value)  
+        setInputValue(e.target.value) 
+        console.log(inputValue) 
     }
     
     useEffect(()=>{
         fetchData();
-    }, [])
+    }, [searchQuery])
 
  
 
@@ -38,12 +39,12 @@ return(
         <h1>Flight status</h1>
         <input type="text"  className="Search" onChange={handleChange}   />
 
-        <button onClick={() => {setSearchQuery(inputValue)}}>SearchBar</button>
+        <button onClick={() => {setSearchQuery(inputValue),console.log(searchQuery)}}>SearchBar</button>
        
 
             {   
                 airlines.filter((airline) => {
-                    return (airline.flag == searchQuery || airline.aircraft_icao == searchQuery)
+                    return (airline.flag == searchQuery || airline.aircraft_icao == searchQuery || airline.departure_airport ? airline.departure_airport.icao_code == searchQuery : null)
                 } ).filter((airline, index) => (index < 5)).map((airline, index)=>
                 <ul
                     key= { index }

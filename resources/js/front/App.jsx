@@ -12,12 +12,14 @@ import UserContext from './UserContext';
 import Homepage from "./Homepage";
 import WeatherAtt from "./WeatherAtt";
 import axios from 'axios';
+import NearbyCities from "./NearbyCities";
 
 
 function App() {
 
   // const [currentForm, setCurrentForm] = useState('login');
   const [user, setUser] = useState(false);
+
 
   const formSwitch = (formName) => {
     setCurrentForm(formName)
@@ -45,7 +47,7 @@ function App() {
     }, [])
 
     return (
-      <UserContext.Provider value={ { user, setUser, getUserInformation } }>
+      <UserContext.Provider value={ { user, setUser, getUserInformation} }>
         <BrowserRouter>
 
           < WeatherAtt />
@@ -53,6 +55,7 @@ function App() {
           < Navigation user={user}/>
 
           < Homepage />
+          
 
           < Main user={user} />
 
