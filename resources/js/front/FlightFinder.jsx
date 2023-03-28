@@ -39,7 +39,7 @@ return(
         <h1>Flight status</h1>
         <input type="text"  className="Search" onChange={handleChange}   />
 
-        <button onClick={() => {setSearchQuery(inputValue),console.log(searchQuery)}}>SearchBar</button>
+        <button onClick={() => {setSearchQuery(inputValue),console.log(inputValue)}}>SearchBar</button>
        
 
             {   

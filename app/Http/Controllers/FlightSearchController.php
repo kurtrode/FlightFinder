@@ -10,15 +10,17 @@ use Illuminate\Database\Eloquent\Collection;
 
 class FlightSearchController extends Controller
 {
-    public function fetchFlightsData(Request $request)
+    public function fetchFlightsData($searchQuery)
     {
-        $searchString = $request->input('searchQuery');
+        
+        // $searchString = $request->input('searchQuery');
         
         // fetch the flights data from API
-        $response = Http::get("https://airlabs.co/api/v9/flights?api_key=add866a8-32ef-4e81-b5a4-145620e6da18&dep_icao=".$searchString);
+        $response = Http::get("https://airlabs.co/api/v9/flights?api_key=add866a8-32ef-4e81-b5a4-145620e6da18&dep_icao=".$searchQuery);
 
         // read the response property of response as JSON (turns into array of associative arrays)
         $flightArrays = $response->json('response');
+        
         // create empty array which we will populate with models
         $flightsArray = [];
 
@@ -35,11 +37,12 @@ class FlightSearchController extends Controller
 
             // you can controll which of the flights are returned to FE by including
             // conditions here which have to be met in order for the model to be created
-            if (($flight['departure_airport']['icao_code'] ?? '') == $searchString) {
+            
+            if (($flight['dep_icao'] ?? '') == $searchQuery) {
                 $flightsArray[] = new FetchedFlight($flight);
             }
         }
-
+  
         // make a collection out of arrays
         $flights = new Collection($flightsArray);
         // at this point, we have the same thing as if we retrieved the flights from DB
