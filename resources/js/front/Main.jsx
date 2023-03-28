@@ -53,6 +53,7 @@ export default function Main({user}) {
   return (
     <Routes>
 
+
         {/* visible to every user : */}
         
          <Route path="/" element={ <h1>Homepage </h1>} />
@@ -75,6 +76,7 @@ export default function Main({user}) {
         <Route path="/flights" element={ <h1>Flights </h1>} />
         <Route path="/about-us" element={ <h1>About Us </h1>} />
         <Route path="/destinations" element={ <h1>Destinations </h1>} />
+
         <Route path="/flight" element={ <FlightFinder /> } />
         <Route path="*" element={ <NotFound />} />
 

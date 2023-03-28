@@ -13,10 +13,15 @@ import SearchResults from './SearchResults'
 import axios from 'axios';
 import './App.css'
 
+import NearbyCities from "./NearbyCities";
+
+
 
 function App() {
 
+
   const [user, setUser] = useState(null);
+
 
   const getUserInformation = async () => {
 
@@ -37,6 +42,7 @@ function App() {
     }, [])
 
     return (
+
       <>
       <UserContext.Provider value={ { getUserInformation } }>
         <BrowserRouter>
@@ -46,6 +52,7 @@ function App() {
           < Carousel />
           < Footer />
           
+
         </BrowserRouter>
       </UserContext.Provider>
       </>

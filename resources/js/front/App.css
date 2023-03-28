@@ -64,6 +64,7 @@ body {
   outline: none;
 }
 
+
 .arrow {
   color: black;
   background: none;
@@ -83,4 +84,8 @@ body {
 .btn-prev {
   transform: rotate(135deg);
   -webkit-transform: rotate(135deg)
+
+.footer-distributed{
+  position: bottom;
+
 }

@@ -33,6 +33,7 @@
 
 //     <div className="main-container">
 
+
 //         <div className="search-container" >
 //             <input
 //                  type="text"
@@ -40,6 +41,7 @@
 //                  onChange={event => setCity(event.target.value)}
 //                  onKeyPress={searchLocation} />
 //         </div>
+
 
 //         <div className="weather-container">
 
