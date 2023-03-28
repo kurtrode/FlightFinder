@@ -1,15 +1,21 @@
 import React from 'react'
 import UserContext from './UserContext';
 import { useContext, useEffect } from "react";
+import { useNavigate } from 'react-router';
 import axios from 'axios'
 
 export default function Logout() {
 
-    const { setUser, getUserInformation } = useContext(UserContext);
+    const navigate = useNavigate();
+
+    const { getUserInformation } = useContext(UserContext);
 
     const logout = async () => {
 
         const response = await axios.post('/logout', {
+
+            //only with fetch:
+            
             // method: 'POST',
             // headers: {
             //     'Accept': 'application/json',
@@ -19,15 +25,10 @@ export default function Logout() {
         })
 
         if (response.status === 204) {
-            // setUser(false);
-            getUserInformation();
-        }
-    }
-
-
-useEffect(() => {
         getUserInformation();
-    }, [])
+        }
+        navigate('/')
+    }
 
    return (
         <button

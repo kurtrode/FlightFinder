@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Link } from "react-router-dom";
-import './App.css'
 import Registration from './Registration'
 import Login from './Login'
 import Main from './Main'
@@ -9,58 +8,47 @@ import Navigation from './Navigation'
 import AboutUs from './AboutUs'
 import Footer from "./Footer";
 import UserContext from './UserContext';
-import Homepage from "./Homepage";
-import WeatherAtt from "./WeatherAtt";
+import Carousel from './Carousel'
+import SearchResults from './SearchResults'
 import axios from 'axios';
+import './App.css'
 
 
 function App() {
 
-  // const [currentForm, setCurrentForm] = useState('login');
-  const [user, setUser] = useState(false);
-
-  const formSwitch = (formName) => {
-    setCurrentForm(formName)
-  }
+  const [user, setUser] = useState(null);
 
   const getUserInformation = async () => {
-    const response = await axios.get('/api/user');
-    
-    if (response.status === 200) {
-      //user is logged-in
-      const data = await response.data;
-      setUser(data);
-    } else {
-      // user is not logged-in
-      setUser(false);
-  }
-}
 
-// {
-//   currentForm === 'login' ? <Login formSwitch={formSwitch}/> : <Registration formSwitch={formSwitch} />
-// }
+     try {
+            // make the AJAX request
+            const response = await axios.get('/api/user');
+            // get the (already JSON-parsed) response data
+            const data = response.data;
+
+            setUser(data);
+        } catch (error) {
+            setUser(false);
+        }
+}
 
  useEffect(() => {
         getUserInformation();
     }, [])
 
     return (
-      <UserContext.Provider value={ { user, setUser, getUserInformation } }>
+      <>
+      <UserContext.Provider value={ { getUserInformation } }>
         <BrowserRouter>
 
-          < WeatherAtt />
-
-          < Navigation user={user}/>
-
-          < Homepage />
-
-          < Main user={user} />
-          < Footer user={user} />
-
-
+          < Navigation user={user} />
+          < Main />
+          < Carousel />
+          < Footer />
+          
         </BrowserRouter>
       </UserContext.Provider>
-        
+      </>
   )
 }
 

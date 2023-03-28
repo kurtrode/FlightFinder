@@ -63,3 +63,24 @@ body {
   border: none;
   outline: none;
 }
+
+.arrow {
+  color: black;
+  background: none;
+  width: 20px;
+  height: 20px;
+  border: solid black;
+  border-width: 0 8px 8px 0;
+  display: inline-block;
+  padding: 3px;
+}
+
+.btn-next {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg)
+}
+
+.btn-prev {
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg)
+}

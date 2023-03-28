@@ -7,8 +7,8 @@ export default function Footer() {
 
     
    
-    <Link to="/github" > GITHUB PICTURE </Link>
-    <Link to="/linkedin" > LINKEDIN PICTURE </Link>
+    <Link to="/github" > Github </Link>
+    <Link to="/linkedin" > Linkedin </Link>
     <Link to="/about-us" > About Us </Link>
 
 
