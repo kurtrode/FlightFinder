@@ -7,6 +7,7 @@ use App\Models\FetchedFlight;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Database\Eloquent\Collection;
+use App\Models\Airport;
 
 class FlightSearchController extends Controller
 {
@@ -77,6 +78,11 @@ class FlightSearchController extends Controller
         });
         return $filteredFlights->values();
     }
+    public function databaseCall(Request $request){
+        $lat = $request->input('lat');
+        $lng = $request->input('lng');
+        $cities = Airport::where('name','like',"%Los Angeles International%")->get();
+    return $cities;}
     // public function emissions(Request $request){
     //     $encodedParams = new URLSearchParams();
     //     $encodedParams.append("iata_airport_from", "LHR");
