@@ -30,8 +30,8 @@ class FlightSearchController extends Controller
             unset ($flight['v_speed']);
             unset ($flight['reg_number']);
             unset ($flight['squawk']);
-            unset ($flight['dep_iata']);
-            unset ($flight['arr_iata']);
+            // unset ($flight['dep_iata']);
+            // unset ($flight['arr_iata']);
             unset ($flight['airline_iata']);
             unset ($flight['flight_iata']);
 
