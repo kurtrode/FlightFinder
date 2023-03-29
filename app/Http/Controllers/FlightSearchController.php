@@ -30,8 +30,8 @@ class FlightSearchController extends Controller
             unset ($flight['v_speed']);
             unset ($flight['reg_number']);
             unset ($flight['squawk']);
-            unset ($flight['dep_iata']);
-            unset ($flight['arr_iata']);
+            // unset ($flight['dep_iata']);
+            // unset ($flight['arr_iata']);
             unset ($flight['airline_iata']);
             unset ($flight['flight_iata']);
 
@@ -66,12 +66,12 @@ class FlightSearchController extends Controller
             $matchesArrivalAirport =  str_contains(strtolower($flight->arrivalAirport->name ?? ''), strtolower($searchQuery));
             $matchesDepartureAirport = str_contains(strtolower($flight->depatureAirport->name ?? ''), strtolower($searchQuery));
             // $matchesArrivalAirport = ($flight->arrivalAirport->name ?? false) === $searchQuery;
-            $matchesFlightNumber = ($flight->flight_icao ?? '') === $searchQuery;
-            
+            $matchesFlightNumberIcao = ($flight->flight_icao ?? '') === $searchQuery;
+            $matchesFlightNumber = ($flight->flight_number ?? '') === $searchQuery;
 
             $isInFuture = true;
 
-            $filterPassed = ($matchesDepartureAirport || $matchesArrivalAirport || $matchesFlightNumber) && $isInFuture;
+            $filterPassed = ($matchesDepartureAirport || $matchesArrivalAirport || $matchesFlightNumberIcao || $matchesFlightNumber ) && $isInFuture;
 
             return $filterPassed;
         });
