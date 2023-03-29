@@ -2,7 +2,11 @@ import React from 'react'
 import { Link } from "react-router-dom";
 
 import Logout from './Logout'
+
 import './Navigation.css'
+
+import NearbyCities from './NearbyCities';
+
 
 
 export default function Navigation({user}) {
@@ -24,6 +28,7 @@ export default function Navigation({user}) {
                 
 
             </div>
+            <NearbyCities/>
 
 
             <div>

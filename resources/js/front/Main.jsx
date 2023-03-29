@@ -11,6 +11,8 @@ import NotFound from './NotFound';
 import SearchResults from './SearchResults'
 import axios from 'axios'
 import { Navigate } from 'react-router-dom';
+import LocationContainer from './LocationContainer';
+
 
 export default function Main({user}) {
 
@@ -69,6 +71,7 @@ export default function Main({user}) {
             </div>
           } 
           />
+ 
         <Route path="/results" element={<SearchResults data={weatherData} />} />
 
         <Route path="/github" element={ <h1>Github</h1>} />
@@ -78,6 +81,7 @@ export default function Main({user}) {
         <Route path="/destinations" element={ <h1>Destinations </h1>} />
         <Route path="/searchresults" element={<SearchResults/>}/>
         <Route path="/flight" element={ <FlightFinder /> } />
+        <Route path="/container" element={<LocationContainer/>}/>
         <Route path="*" element={ <NotFound />} />
 
 
