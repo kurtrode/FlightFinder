@@ -19,7 +19,7 @@ export default function Navigation({user}) {
                 <Link to="/destinations" > Destinations</Link>      
                 <Link to="/flight" > Flight</Link>           
                              
-                <div class="animation start-home"></div>
+                <div className="animation_start-home"></div>
                 
 
             </div>
