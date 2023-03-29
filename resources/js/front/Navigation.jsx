@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from "react-router-dom";
 
 import Logout from './Logout'
+import './Navigation.css'
 
 
 export default function Navigation({user}) {
