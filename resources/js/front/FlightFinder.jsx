@@ -66,12 +66,13 @@ return(
                         <p>Aircraft type: {airline.flight_icao ? airline.flight_icao
                         :
                         "no number"}</p>
+                        <p>Departure: {airline.depature_airport.name ? airline.depature_airport.name
+                        :
+                        "no depature"}</p>
                         <p>Arrival : {airline.arrival_airport.name ? airline.arrival_airport.name
                         :
                         "no arrival"}</p>
-                         <p>Dapature: {airline.depature_airport.name ? airline.depature_airport.name
-                        :
-                        "no depature"}</p>
+                         
 
                         {/* <p>Aircraft type: {airline.aircraft_icao ? airline.aircraft_icao
                         :

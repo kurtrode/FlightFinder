@@ -1,11 +1,14 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import UserContext from "./UserContext";
 export default function NearbyCities(){
     const [emissions, setEmissions] = useState([]);
 const encodedParams = new URLSearchParams();
-encodedParams.append("iata_airport_from", "LHR");
-encodedParams.append("iata_airport_to", "ORD");
+const {arrIata,depIata} = useContext(UserContext);
+encodedParams.append("iata_airport_from", depIata);
+encodedParams.append("iata_airport_to", arrIata);
 encodedParams.append("number_of_passengers", "1");
+console.log(depIata);
 
 const options = {
   method: 'POST',
@@ -27,7 +30,7 @@ async function fetchEmissions(){
 }
 useEffect(()=>{
     fetchEmissions();
-},[])
+},[arrIata,depIata])
 
 return(
     <>
