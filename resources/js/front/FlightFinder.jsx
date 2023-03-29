@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import UserContext from "./UserContext";
 
 
 
 export default function FlightFinder (){
+    const {arrIata,setArrIata,depIata,setDepIata,arrIcao,setArrIcao,depIcao,setDepIcao,arrName,setArrName,depName,setDepName} = useContext(UserContext);
 
        
     const [searchQuery, setSearchQuery] = useState("");
@@ -59,7 +61,7 @@ return(
                 <ul
                     key= { index }
                     >
-                    <Link to="/">
+                    <Link to="/searchresults"  onClick={()=>{setArrIata(airline.arr_iata);setDepIata(airline.dep_iata);setArrIcao(airline.dep_icao);setDepIcao(airline.dep_icao);setArrName(airline.arrival_airport.name);setDepName(airline.depature_airport.name)}}>
                     <div className="aircraft_details">
                         <p>Aircraft type: {airline.flight_icao ? airline.flight_icao
                         :
@@ -67,7 +69,7 @@ return(
                         <p>Arrival : {airline.arrival_airport.name ? airline.arrival_airport.name
                         :
                         "no arrival"}</p>
-                         <p>Dapature: {airline.depature_airport.name ? airline.arrival_airport.name
+                         <p>Dapature: {airline.depature_airport.name ? airline.depature_airport.name
                         :
                         "no depature"}</p>
 
