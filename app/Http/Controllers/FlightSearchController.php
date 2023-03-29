@@ -66,12 +66,12 @@ class FlightSearchController extends Controller
             $matchesArrivalAirport =  str_contains(strtolower($flight->arrivalAirport->name ?? ''), strtolower($searchQuery));
             $matchesDepartureAirport = str_contains(strtolower($flight->depatureAirport->name ?? ''), strtolower($searchQuery));
             // $matchesArrivalAirport = ($flight->arrivalAirport->name ?? false) === $searchQuery;
-            $matchesFlightNumber = ($flight->flight_icao ?? '') === $searchQuery;
-            
+            $matchesFlightNumberIcao = ($flight->flight_icao ?? '') === $searchQuery;
+            $matchesFlightNumber = ($flight->flight_number ?? '') === $searchQuery;
 
             $isInFuture = true;
 
-            $filterPassed = ($matchesDepartureAirport || $matchesArrivalAirport || $matchesFlightNumber) && $isInFuture;
+            $filterPassed = ($matchesDepartureAirport || $matchesArrivalAirport || $matchesFlightNumberIcao || $matchesFlightNumber ) && $isInFuture;
 
             return $filterPassed;
         });

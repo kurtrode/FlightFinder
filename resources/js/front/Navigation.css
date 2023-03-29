@@ -13,6 +13,7 @@ body {
     margin: 0;
     box-sizing: border-box;
   }
+
   nav {
     margin: 27px auto 0;
     display: flex;
@@ -26,6 +27,7 @@ body {
     font-size: 0;
     margin-top: 0;
   }
+
   nav a {
     line-height: 60px;
     height: 100%;
@@ -39,7 +41,8 @@ body {
     color: white;
     cursor: pointer;
   }
-  nav .animation {
+
+  nav .animation_start-home {
     position: absolute;
     height: 100%;
     top: 0;
@@ -89,7 +92,7 @@ body {
   }
 
   .login {
-    align-items: rign;
+    align-items: rignt;
 
   }
 
