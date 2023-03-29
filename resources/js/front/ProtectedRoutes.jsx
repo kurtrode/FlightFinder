@@ -2,11 +2,11 @@
 // import React from 'react'
 
 
-// const ProtectedRoutes = () => {
+// const ProtectedRoutes = (user) => {
 
 // return 
 
-//    user ? 
+//    !user ? <Navigate to={ < Login />} : 
 
 // }
 // export default ProtectedRoutes;
