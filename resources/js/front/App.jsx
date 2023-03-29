@@ -27,11 +27,14 @@ function App() {
 
      try {
             // make the AJAX request
-            const response = await axios.get('/api/user');
+            const response = await axios.get('/api/user/check');
             // get the (already JSON-parsed) response data
             const data = response.data;
-
-            setUser(data);
+            if (data) {
+              setUser(data);
+            } else {
+              setUser(false);
+            }
         } catch (error) {
             setUser(false);
         }
