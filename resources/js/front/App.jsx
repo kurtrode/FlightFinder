@@ -29,7 +29,7 @@ function App() {
   const [depName, setDepName] = useState('');
   const [lat,setLat] = useState(null);
   const [lng,setLng] = useState(null);
-  const [flight,setFlight] = useState([]);
+  const [flight,setFlight] = useState({});
 
 
   const getUserInformation = async () => {

@@ -2,8 +2,12 @@ import React from 'react'
 import { Link } from "react-router-dom";
 
 import Logout from './Logout'
+
+import './Navigation.css'
+
 import NearbyCities from './NearbyCities';
 import './Navigation.css';
+
 
 
 export default function Navigation({user}) {

@@ -1,11 +1,12 @@
 import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import UserContext from "./UserContext";
+import './FlightFinder.css';
 
 
 
 export default function FlightFinder (){
-    const {arrIata,setArrIata,depIata,setDepIata,arrIcao,setArrIcao,depIcao,setDepIcao,arrName,setArrName,depName,setDepName,lat,setLat,lng,setLng,flight,setFlight} = useContext(UserContext);
+    const {arrIata,setArrIata,depIata,setDepIata,arrIcao,setArrIcao,depIcao,setDepIcao,arrName,setArrName,depName,setDepName,flight,setFlight} = useContext(UserContext);
 
        
     const [searchQuery, setSearchQuery] = useState("");
@@ -21,7 +22,7 @@ export default function FlightFinder (){
         console.log(data);
 
         setAirlines(data);
-        // console.log(airlines);
+        console.log(airlines);
 
                
     }
@@ -41,7 +42,11 @@ return(
     <div className="Flight">
         <h1>Flight status</h1>
         <input type="text"  placeholder="Flight #"className="Search" onChange={handleChange}   />
-        <button onClick={() => {setSearchQuery(inputValue),console.log(inputValue)}}>SearchBar</button>
+        <button onClick={() => {setSearchQuery(inputValue),console.log(inputValue)}}>Search</button>
+        <input type="text"  placeholder="Departure Airport"className="Search" onChange={handleChange}   />
+        <button onClick={() => {setSearchQuery(inputValue),console.log(inputValue)}}>Search</button>
+        <input type="text"  placeholder="Arrival Airport"className="Search" onChange={handleChange}   />
+        <button onClick={() => {setSearchQuery(inputValue),console.log(inputValue)}}>Search</button>
 {/*        
         <input type="text"  placeholder="Depature airport"className="Search" onChange={handleChange}   />
         <button onClick={() => {setSearchQuery(inputValue),console.log(inputValue)}}>SearchBar</button>
@@ -61,19 +66,23 @@ return(
                 <ul
                     key= { index }
                     >
-                    <Link to="/container"  onClick={()=>{setArrIata(airline.arr_iata);setDepIata(airline.dep_iata);setArrIcao(airline.arr_icao);setDepIcao(airline.dep_icao);setArrName(airline.arrival_airport.name);setDepName(airline.depature_airport.name);setLat(airline.lat);setLng(airline.lng);setFlight(airline);console.log(flight);}}>
+                    <Link to="/container"  onClick={()=>{setArrIata(airline.arr_iata);setDepIata(airline.dep_iata);setArrIcao(airline.dep_icao);setDepIcao(airline.dep_icao);setArrName(airline.arrival_airport.name);setDepName(airline.depature_airport.name);setFlight(airline)}}>
                     <div className="aircraft_details">
-                        <p>Aircraft type: {airline.flight_icao ? airline.flight_icao
+
+                       
+                        {airline.flight_icao ? <p>Flight number: {airline.flight_icao}</p>
                         :
-                        "no number"}</p>
-                        {airline.depature_airport ? <p>Departure: {airline.depature_airport.name}</p>
+                        "no number"}
+                      
+                        
+                        {airline.depature_airport.name ? <p> Departure: {airline.depature_airport.name}</p>
                         :
                         "no depature"}
-                        {airline.arrival_airport ? <p>Arrival: {airline.arrival_airport.name}</p>
+                        {airline.arrival_airport.name ? <p> Arrival: {airline.arrival_airport.name}</p>
                         :
                         "no arrival"}
                          
-
+                          
                         {/* <p>Aircraft type: {airline.aircraft_icao ? airline.aircraft_icao
                         :
                         "no aircraft"}</p>
