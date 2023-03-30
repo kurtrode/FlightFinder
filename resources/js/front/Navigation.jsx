@@ -22,7 +22,7 @@ export default function Navigation({user}) {
             <div className="a">
 
                 <Link className="a" to="/" > Home</Link>
-                <Link className="a" to="/maps" > MAP/S</Link>
+                <Link className="a" to="/maps" >Weather</Link>
                 <Link className="a" to="/destinations" > Destinations</Link>      
                 <Link className="a" to="/flight" > Flight</Link>           
     

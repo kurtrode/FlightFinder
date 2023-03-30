@@ -16,12 +16,12 @@ const temp = receivedData.main.temp - 273.15;
 
         <div className="top">
 
-            <div className="location"></div>
-            <p> {receivedData.name} </p>
-            <div className="temperature"></div>
-            { receivedData.main ? <p> {temp.toFixed(2)} &#8451;</p> : null }
-            <div className="description"></div>
-             {receivedData.weather? <p> {receivedData.weather[0].main}</p> : null}
+            <div className="location">Location:</div>
+            <p> <strong>{receivedData.name} </strong></p>
+            <div className="temperature">Temperature:</div>
+            { receivedData.main ? <p> <strong> {temp.toFixed(2)}  &#8451; </strong></p> : null }
+            <div className="description">Weather:</div>
+             {receivedData.weather? <p> <strong> {receivedData.weather[0].main} </strong></p> : null}
             
         </div>
 

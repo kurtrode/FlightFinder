@@ -12,6 +12,7 @@ import SearchResults from './SearchResults'
 import axios from 'axios'
 import { Navigate } from 'react-router-dom';
 import LocationContainer from './LocationContainer';
+import Flights from "./Flights";
 
 
 export default function Main({user}) {
@@ -62,7 +63,8 @@ export default function Main({user}) {
          <Route path="/maps" element={
            
             <div className="search-container" >
-            <input
+            <p>Check the weather in:</p>
+            <input className="weather-input"
                  type="text"
                  value={city}
                  onChange={event => setCity(event.target.value)}
@@ -76,11 +78,11 @@ export default function Main({user}) {
 
         <Route path="/github" element={ <h1>Github</h1>} />
         <Route path="/linkedin" element={ <h1>LinkedIn </h1>} />
-        <Route path="/flights" element={ <h1>Flights </h1>} />
+        <Route path="/flight" element={ <h1>Future flights from Prague: <Flights /> </h1>} />
         <Route path="/about-us" element={ <AboutUs/>} />
         <Route path="/destinations" element={ <h1>Destinations </h1>} />
         <Route path="/searchresults" element={<SearchResults/>}/>
-        <Route path="/flight" element={ <FlightFinder /> } />
+        {/* <Route path="/flight" element={ <FlightFinder /> } /> */}
         <Route path="/container" element={<LocationContainer/>}/>
         <Route path="*" element={ <NotFound />} />
 
