@@ -62,8 +62,7 @@ function App() {
 
           < Navigation user={user} />
           < Main />
-          < FlightFinder />
-          < Carousel />
+          {/* carousel should be displayed via routes on "/" */}
           < Footer />
           
 
