@@ -31,10 +31,10 @@ export default function Logout() {
     }
 
    return (
-        <button
+        <button className="logout-btn"
             onClick={ logout }
         >
-            Logout
+            LOGOUT
         </button>
     )
 }
