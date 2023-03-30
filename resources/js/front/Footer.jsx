@@ -4,10 +4,13 @@ import './Footer.css';
 
 export default function Footer() {
   return (
+    
+  
+            
  
-     
-    <div className="footer-distributed">
-      <div className=''>
+      
+   <div className='footer-distributed'>
+      <div className='a'>
 
             <div className="footer-left">
 
@@ -49,11 +52,7 @@ export default function Footer() {
 
               <div class="footer-icons">
                 
-                <a href="#"><i className="fa fa-facebook"></i></a>
-                <a href="#"><i className="fa fa-twitter"></i></a>
-                <a href="#"><i className="fa fa-linkedin"></i></a>
-                <a href="#"><i className="fa fa-github"></i></a>
-
+               
               <Link to="/github" > Github </Link>
               <Link to="/linkedin" > Linkedin </Link>
               <Link to="/about-us" > About Us </Link>
@@ -62,7 +61,7 @@ export default function Footer() {
             </div>
       </div>
 
-    </div>
+    </div> 
 
         
       
