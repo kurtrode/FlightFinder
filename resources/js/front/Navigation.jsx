@@ -16,17 +16,15 @@ export default function Navigation({user}) {
   return (
     <>
 
-    <nav>
+    <nav className="navigation-bar">
             
-            <div className='a'>
-                <Link to="/" > Home</Link>
-                <Link to="/maps" > MAP/S</Link>
-                <Link to="/destinations" > Destinations</Link>      
-                <Link to="/flight" > Flight</Link>           
-                             
-                <div className="animation_start-home"></div>
-                
+            <div className="a">
 
+                <Link className="a" to="/" > Home</Link>
+                <Link className="a" to="/maps" > MAP/S</Link>
+                <Link className="a" to="/destinations" > Destinations</Link>      
+                <Link className="a" to="/flight" > Flight</Link>           
+    
             </div>
             <NearbyCities/>
 
@@ -38,8 +36,8 @@ export default function Navigation({user}) {
                   ? (
                 <>
 
-                <Link to="/register">Registration</Link>
-                <Link to="/login">Login</Link>
+                <Link className="a" to="/register">Registration</Link>
+                <Link className="a" to="/login">Login</Link>
                                 
                 </>
                  )
