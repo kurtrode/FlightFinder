@@ -77,7 +77,7 @@ export default function Main({user}) {
         <Route path="/github" element={ <h1>Github</h1>} />
         <Route path="/linkedin" element={ <h1>LinkedIn </h1>} />
         <Route path="/flights" element={ <h1>Flights </h1>} />
-        <Route path="/about-us" element={ <h1>About Us </h1>} />
+        <Route path="/about-us" element={ <AboutUs/>} />
         <Route path="/destinations" element={ <h1>Destinations </h1>} />
         <Route path="/searchresults" element={<SearchResults/>}/>
         <Route path="/flight" element={ <FlightFinder /> } />

@@ -5,7 +5,7 @@ import UserContext from "./UserContext";
 
 
 export default function FlightFinder (){
-    const {arrIata,setArrIata,depIata,setDepIata,arrIcao,setArrIcao,depIcao,setDepIcao,arrName,setArrName,depName,setDepName} = useContext(UserContext);
+    const {arrIata,setArrIata,depIata,setDepIata,arrIcao,setArrIcao,depIcao,setDepIcao,arrName,setArrName,depName,setDepName,lat,setLat,lng,setLng,flight,setFlight} = useContext(UserContext);
 
        
     const [searchQuery, setSearchQuery] = useState("");
@@ -61,17 +61,17 @@ return(
                 <ul
                     key= { index }
                     >
-                    <Link to="/searchresults"  onClick={()=>{setArrIata(airline.arr_iata);setDepIata(airline.dep_iata);setArrIcao(airline.dep_icao);setDepIcao(airline.dep_icao);setArrName(airline.arrival_airport.name);setDepName(airline.depature_airport.name)}}>
+                    <Link to="/container"  onClick={()=>{setArrIata(airline.arr_iata);setDepIata(airline.dep_iata);setArrIcao(airline.arr_icao);setDepIcao(airline.dep_icao);setArrName(airline.arrival_airport.name);setDepName(airline.depature_airport.name);setLat(airline.lat);setLng(airline.lng);setFlight(airline);console.log(flight);}}>
                     <div className="aircraft_details">
                         <p>Aircraft type: {airline.flight_icao ? airline.flight_icao
                         :
                         "no number"}</p>
-                        <p>Departure: {airline.depature_airport.name ? airline.depature_airport.name
+                        {airline.depature_airport ? <p>Departure: {airline.depature_airport.name}</p>
                         :
-                        "no depature"}</p>
-                        <p>Arrival : {airline.arrival_airport.name ? airline.arrival_airport.name
+                        "no depature"}
+                        {airline.arrival_airport ? <p>Arrival: {airline.arrival_airport.name}</p>
                         :
-                        "no arrival"}</p>
+                        "no arrival"}
                          
 
                         {/* <p>Aircraft type: {airline.aircraft_icao ? airline.aircraft_icao

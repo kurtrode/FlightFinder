@@ -1,5 +1,5 @@
 import React from 'react'
-
+import GithUb from '/public/img/github.png'
 export default function AboutUs() {
   return (
     <>
@@ -9,7 +9,9 @@ export default function AboutUs() {
         <div>
         <div>
         <h3>Kurt Rode</h3>
+        
         <p>Kurt was responsible for the setup and administration of the database as well as varied tasks throughout the site such as the flight map.</p>
+        <img src={GithUb} width={20} height={20}/> <a href="http://www.github.com/kurtrode">Kurt's GitHub</a>
         </div>
         <div>
         <h3>Leonid Selivanov</h3>

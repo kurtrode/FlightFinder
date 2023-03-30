@@ -33,8 +33,8 @@ useEffect(()=>{
 },[arrIata,depIata])
 
 return(
-    <>
-       <h3>{emissions.co2e_kg} kg of CO2 from {emissions.airport_from} to {emissions.airport_to}</h3>
+    <>{depIata ?
+       <h3>{emissions.co2e_kg} kg of CO2 will be emitted per passenger during the flight from {emissions.airport_from} to {emissions.airport_to}</h3>:""}
         </>
 )
 

@@ -3,10 +3,15 @@
 // import Geolocation from 'react-native-geolocation-service'
 // 
 
+import { useState } from "react"
+import UserContext from "./UserContext"
+
 // import { useEffect, useState } from "react";
 
 
 export default function FlightMap(){
+    const {lat,lng} = useState(UserContext);
+    const url = `http://www.flightradar24.com/simple_index.php?lat=${lat}&lon=${lng}`
 //     const [lat, setLat] = useState(null);
 // const [lng, setLng] = useState(null);
 // const [status, setStatus] = useState(null);
@@ -44,7 +49,7 @@ export default function FlightMap(){
     //     console.log(coords.latitude);
     return(
         
-        <div className="flightmap"><iframe src="http://www.flightradar24.com/simple_index.php?lat=50.10&lon=14.26" className="flightmap_map" width={700} height={500}></iframe></div> 
+        <div className="flightmap"><iframe src={url} className="flightmap_map" width={400} height={300}></iframe></div> 
     
     )
 }
