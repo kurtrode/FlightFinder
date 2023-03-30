@@ -42,12 +42,14 @@ return(
     <div className="flight">
         <h1>Flight status</h1>
 
-        <input type="text"  placeholder="Flight #"className="Search" onChange={handleChange}   />
-        <button onClick={() => {setSearchQuery(inputValue),console.log(inputValue)}}>Search</button>
-        <input type="text"  placeholder="Departure Airport"className="Search" onChange={handleChange}   />
-        <button onClick={() => {setSearchQuery(inputValue),console.log(inputValue)}}>Search</button>
-        <input type="text"  placeholder="Arrival Airport"className="Search" onChange={handleChange}   />
-        <button onClick={() => {setSearchQuery(inputValue),console.log(inputValue)}}>Search</button>
+        <input type="text"  placeholder="Flight #" className="flight-search" onChange={handleChange}   />
+        <button onClick={() => {setSearchQuery(inputValue),console.log(inputValue)}} className="flight-s-button">Search</button>
+
+        <input type="text"  placeholder="Departure Airport" className="flight-search" onChange={handleChange}   />
+        <button onClick={() => {setSearchQuery(inputValue),console.log(inputValue)}} className="flight-s-button">Search</button>
+
+        <input type="text"  placeholder="Arrival Airport" className="flight-search" onChange={handleChange}   />
+        <button onClick={() => {setSearchQuery(inputValue),console.log(inputValue)}} className="flight-s-button">Search</button>
 
 {/*        
         <input type="text"  placeholder="Depature airport"className="Search" onChange={handleChange}   />
