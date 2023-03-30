@@ -6,12 +6,15 @@ import './FlightFinder.css';
 
 
 export default function FlightFinder (){
-    const {arrIata,setArrIata,depIata,setDepIata,arrIcao,setArrIcao,depIcao,setDepIcao,arrName,setArrName,depName,setDepName,flight,setFlight} = useContext(UserContext);
+    const {arrIata,setArrIata,depIata,setDepIata,arrIcao,setArrIcao,depIcao,setDepIcao,arrName,setArrName,depName,setDepName,flight,setFlight,weatherDepLat,weatherDepLng} = useContext(UserContext);
 
        
     const [searchQuery, setSearchQuery] = useState("");
+    const [departQuery, setDepartQuery] = useState("");
+    const [arrivalQuery, setArrivalQuery] = useState("");
         const [airlines, setAirlines] = useState([]);
-       
+       const [departValue, setDepartValue] = useState("");
+       const [arrivalValue, setArrivalValue] = useState("");
         const [inputValue, setInputValue] = useState("");
 
     async function fetchData() {
@@ -26,16 +29,47 @@ export default function FlightFinder (){
 
                
     }
+     async function fetchDepart() {
+        
+        const response = await fetch(`/api/fetch-departure/${departQuery}`);    
+
+        const data = await response.json();
+        console.log(data);
+
+        setAirlines(data);
+        console.log(airlines);
+
+               
+    }
+    async function fetchArrive() {
+        
+        const response = await fetch(`/api/fetch-arrival/${arrivalQuery}`);    
+
+        const data = await response.json();
+        console.log(data);
+
+        setAirlines(data);
+        console.log(airlines);
+
+               
+    }
+    
 
     const handleChange = (e) => {
         setInputValue(e.target.value) 
         console.log(inputValue) 
     }
     
+    
     useEffect(()=>{
         fetchData();
     }, [searchQuery])
-
+    useEffect(()=>{
+        fetchDepart();
+    }, [departQuery])
+    useEffect(()=>{
+        fetchArrive();
+    }, [arrivalQuery])
  
 
 return(
@@ -46,10 +80,10 @@ return(
         <button onClick={() => {setSearchQuery(inputValue),console.log(inputValue)}} className="flight-s-button">Search</button>
 
         <input type="text"  placeholder="Departure Airport" className="flight-search" onChange={handleChange}   />
-        <button onClick={() => {setSearchQuery(inputValue),console.log(inputValue)}} className="flight-s-button">Search</button>
+        <button onClick={() => {setDepartQuery(inputValue),console.log(inputValue)}} className="flight-s-button">Search</button>
 
-        <input type="text"  placeholder="Arrival Airport" className="flight-search" onChange={handleChange}   />
-        <button onClick={() => {setSearchQuery(inputValue),console.log(inputValue)}} className="flight-s-button">Search</button>
+         <input type="text"  placeholder="Arrival Airport" className="flight-search" onChange={handleChange}   />
+        <button onClick={() => {setArrivalQuery(inputValue),console.log(inputValue)}} className="flight-s-button">Search</button>
 
 {/*        
         <input type="text"  placeholder="Depature airport"className="Search" onChange={handleChange}   />

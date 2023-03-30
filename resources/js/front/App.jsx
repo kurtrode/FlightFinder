@@ -31,6 +31,8 @@ function App() {
   const [lat,setLat] = useState(null);
   const [lng,setLng] = useState(null);
   const [flight,setFlight] = useState({});
+  const[ weatherDepLat, setWeatherDepLat] = useState();
+  const[ weatherDepLng, setWeatherDepLng] = useState();
 
 
   const getUserInformation = async () => {
@@ -49,6 +51,13 @@ function App() {
             setUser(false);
         }
 }
+const aita = async()=>{
+  const respond = await axios.get(`https://airlabs.co/api/v9/airports?iata_code=${props.depIata}&api_key=703a0329-5efa-4ed6-b128-02772bb1eb2f`);
+  // const next = await respond.json();
+  setWeatherDepLat(respond.data.response[0].lat.toFixed(2));
+  setWeatherDepLng(respond.data.response[0].lng.toFixed(2));
+  
+}
 
  useEffect(() => {
         getUserInformation();
@@ -57,7 +66,7 @@ function App() {
     return (
 
       <>
-      <UserContext.Provider value={ { getUserInformation,depIata,setDepIata,arrIata,setArrIata,arrIcao,setArrIcao,depIcao,setDepIcao,arrName,setArrName,depName,setDepName,lat,setLat,lng,setLng,flight,setFlight} }>
+      <UserContext.Provider value={ { getUserInformation,depIata,setDepIata,arrIata,setArrIata,arrIcao,setArrIcao,depIcao,setDepIcao,arrName,setArrName,depName,setDepName,lat,setLat,lng,setLng,flight,setFlight,weatherDepLat,weatherDepLng} }>
         <BrowserRouter>
 
           < Navigation user={user} />

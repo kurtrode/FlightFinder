@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import { useState } from "react";
 import axios from 'axios';
 import UserContext from './UserContext';
@@ -6,40 +6,41 @@ import UserContext from './UserContext';
 
 export default function WeatherAttDep(props) {
     // const{depIata}= useState(UserContext);
+    const{weatherDepLat,weatherDepLng} = useContext(UserContext);
 
     const[ weatherData, setWeatherData] = useState({})
     const[city, setCity] = useState('')
-    const[ weatherDepLat, setWeatherDepLat] = useState()
-    const[ weatherDepLng, setWeatherDepLng] = useState()
+   
 
-    const aita = async()=>{
-        const respond = await axios.get(`https://airlabs.co/api/v9/airports?iata_code=${props.depIata}&api_key=703a0329-5efa-4ed6-b128-02772bb1eb2f`);
-        // const next = await respond.json()
-        setWeatherDepLat(respond.lat)
-        setWeatherDepLng(respond.lng)
-        console.log(respond.lat)
-    }
-    aita();
+    // const aita = async()=>{
+    //     const respond = await axios.get(`https://airlabs.co/api/v9/airports?iata_code=${props.depIata}&api_key=703a0329-5efa-4ed6-b128-02772bb1eb2f`);
+    //     // const next = await respond.json();
+    //     setWeatherDepLat(respond.data.response[0].lat.toFixed(2));
+    //     setWeatherDepLng(respond.data.response[0].lng.toFixed(2));
+        
+    // }
+    // aita();
 
-    const url = `https://api.openweathermap.org/data/2.5/weather?${weatherDepLat}=44.34&${weatherDepLng}=10.99&appid=c97a46a679a747936540aa8b97b5ad40`
+    const url = `https://api.openweathermap.org/data/2.5/weather?lat=${props.weatherDepLat}&lon=${props.weatherDepLng}&appid=c97a46a679a747936540aa8b97b5ad40`
 
-
+console.log(url);
     const searchLocation = async(event) => {
 
         // event.preventDefault()
         
-        if (event.key === 'Enter') {
+        
             
             const response = await fetch(url)
             const locData = await response.json()
-            setWeatherData(locData)
+            setWeatherData(weatherData)
             
           
-        }
+        
         
     }
-
-    // console.log(weatherData)
+useEffect(()=>{
+searchLocation();},[weatherDepLat]);
+    console.log(weatherData)
 
 
 
@@ -48,7 +49,7 @@ export default function WeatherAttDep(props) {
 
     <div className="main-container">
 
-{/* {console.log(weatherData)} */}
+{console.log(weatherData)}
         
 
 
