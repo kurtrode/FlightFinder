@@ -58,7 +58,7 @@ export default function Main({user}) {
 
         {/* visible to every user : */}
         
-         <Route path="/" element={ <h1>Homepage </h1>} />
+         <Route path="/" element={ <h3 className="home-flight-finder">Welcome to Flight Finder</h3>} />
          <Route path="/maps" element={
            
             <div className="search-container" >

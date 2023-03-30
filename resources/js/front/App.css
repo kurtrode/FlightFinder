@@ -2,6 +2,35 @@ html {
   font-family: 'Noto Serif Display';
 }
 
+.flight-search {
+  margin: 0.3rem 5px;
+  padding: 0.5rem;
+  border-radius: 10px;
+  background-color: white;
+  color: black;
+  border: none;
+  outline: none;
+  font-size: 15px;
+
+}
+
+.flight-s-button {
+  color: black;
+  background-color: white;
+  margin: 0.5rem 0;
+  padding: 0.03 rem;
+  cursor: pointer;
+  border-radius: 10px;
+  font-size: 13.5px;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  text-align: center;
+}
+
 body {
   margin: 0;
   display: flex;
@@ -90,7 +119,6 @@ body {
   -webkit-transform: rotate(135deg)
 }
 
-/* .footer-distributed {
-  position: bottom;
-
-} */
+.home-flight-finder {
+  text-align: center;
+}

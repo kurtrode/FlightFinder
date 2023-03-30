@@ -10,6 +10,7 @@ import Footer from "./Footer";
 import UserContext from './UserContext';
 import Carousel from './Carousel'
 import SearchResults from './SearchResults'
+import FlightFinder from './FlightFinder'
 import axios from 'axios';
 import './App.css'
 
@@ -58,6 +59,7 @@ function App() {
 
           < Navigation user={user} />
           < Main />
+          < FlightFinder />
           < Carousel />
           < Footer />
           
