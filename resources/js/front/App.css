@@ -4,11 +4,15 @@ html {
 
 body {
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .app {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   min-width: 100vw;
   min-height: 100vh;
   color: white;
@@ -84,8 +88,9 @@ body {
 .btn-prev {
   transform: rotate(135deg);
   -webkit-transform: rotate(135deg)
+}
 
-.footer-distributed{
+/* .footer-distributed {
   position: bottom;
 
-}
+} */
