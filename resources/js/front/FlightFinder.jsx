@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import UserContext from "./UserContext";
+import './FlightFinder.css';
 
 
 
@@ -63,9 +64,13 @@ return(
                     >
                     <Link to="/searchresults"  onClick={()=>{setArrIata(airline.arr_iata);setDepIata(airline.dep_iata);setArrIcao(airline.dep_icao);setDepIcao(airline.dep_icao);setArrName(airline.arrival_airport.name);setDepName(airline.depature_airport.name)}}>
                     <div className="aircraft_details">
+
+                       <ol>
                         <p>Aircraft type: {airline.flight_icao ? airline.flight_icao
                         :
                         "no number"}</p>
+                      </ol>
+                        <div className="OrderedList">
                         <p>Departure: {airline.depature_airport.name ? airline.depature_airport.name
                         :
                         "no depature"}</p>
@@ -73,7 +78,7 @@ return(
                         :
                         "no arrival"}</p>
                          
-
+                         </div>    
                         {/* <p>Aircraft type: {airline.aircraft_icao ? airline.aircraft_icao
                         :
                         "no aircraft"}</p>

@@ -38,7 +38,7 @@ return (
             <p><a href="mailto:support@company.com">flightfinder@company.com</a></p>
         </div>
 
-    </div>
+    </div> 
 
     <div className="footer-right">
 
