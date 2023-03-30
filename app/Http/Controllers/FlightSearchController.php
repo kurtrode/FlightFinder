@@ -11,7 +11,7 @@ use App\Models\Airport;
 
 class FlightSearchController extends Controller
 {
-    public function fetchFlightsData($searchQuery)
+    public function fetchFlightsData(Request $request,$searchQuery=null)
     {
         
         // $searchString = $request->input('searchQuery');
@@ -59,13 +59,33 @@ class FlightSearchController extends Controller
         $flights->load('depatureAirport:icao_code,name');
       
         $flights->load('airlineName:icao_code,name');
+        $multiSearchInput = $request->all();
+        if($multiSearchInput['arrival'] && $multiSearchInput['departure']){
+            
+            $filteredFlights = $flights->filter(function ($flight) use ($multiSearchInput) {
+            
+                // $matchesDepartureAirport = ($flight->depatureAirport->name ?? false) === $searchQuery;
+                $matchesArrivalAirport =  str_contains(strtolower($flight->arrivalAirport->name ?? ''), strtolower($multiSearchInput['arrival']));
+                $matchesDepartureAirport = str_contains(strtolower($flight->depatureAirport->name ?? ''), strtolower($multiSearchInput['departure']));
+                // $matchesArrivalAirport = ($flight->arrivalAirport->name ?? false) === $searchQuery;
+                
+    
+                $isInFuture = true;
+    
+                $filterPassed = ($matchesDepartureAirport && $matchesArrivalAirport) && $isInFuture;
+    
+                return $filterPassed;
+            
+            });
+           
+        }else{
 
-
-        $filteredFlights = $flights->filter(function ($flight) use ($searchQuery) {
+        
+        $filteredFlights = $flights->filter(function ($flight) use ($multiSearchInput) {
             
             // $matchesDepartureAirport = ($flight->depatureAirport->name ?? false) === $searchQuery;
-            $matchesArrivalAirport =  str_contains(strtolower($flight->arrivalAirport->name ?? ''), strtolower($searchQuery));
-            $matchesDepartureAirport = str_contains(strtolower($flight->depatureAirport->name ?? ''), strtolower($searchQuery));
+            $matchesArrivalAirport =  str_contains(strtolower($flight->arrivalAirport->name ?? ''), strtolower($multiSearchInput['arrival']));
+            $matchesDepartureAirport = str_contains(strtolower($flight->depatureAirport->name ?? ''), strtolower($multiSearchInput['departure']));
             // $matchesArrivalAirport = ($flight->arrivalAirport->name ?? false) === $searchQuery;
             $matchesFlightNumberIcao = ($flight->flight_icao ?? '') === $searchQuery;
             $matchesFlightNumber = ($flight->flight_number ?? '') === $searchQuery;
@@ -76,7 +96,9 @@ class FlightSearchController extends Controller
 
             return $filterPassed;
         });
+    }
         return $filteredFlights->values();
+    
     }
     public function fetchDeparture($departQuery)
     {
@@ -207,6 +229,74 @@ class FlightSearchController extends Controller
             $isInFuture = true;
 
             $filterPassed = ($matchesArrivalAirport) && $isInFuture;
+
+            return $filterPassed;
+        });
+        return $filteredFlights->values();
+    }
+    public function fetchTravel(Request $request)
+    {
+        
+        // $searchDepart = $request->input('departure');
+        // $searchArrive = $request->input('arrival');
+        
+        // fetch the flights data from API
+        $response = Http::get("https://airlabs.co/api/v9/flights?api_key=add866a8-32ef-4e81-b5a4-145620e6da18");
+
+        // read the response property of response as JSON (turns into array of associative arrays)
+        $flightArrays = $response->json('response');
+        
+        // create empty array which we will populate with models
+        $flightsArray = [];
+
+        // populate the array with models based on fetched associative arrays
+        foreach ($flightArrays as $flight) {
+            // get rid of all the useless data about a flight to make the response leaner
+            unset ($flight['v_speed']);
+            unset ($flight['reg_number']);
+            unset ($flight['squawk']);
+            // unset ($flight['dep_iata']);
+            // unset ($flight['arr_iata']);
+            unset ($flight['airline_iata']);
+            unset ($flight['flight_iata']);
+
+            // you can controll which of the flights are returned to FE by including
+            // conditions here which have to be met in order for the model to be created
+            // dd($flight);
+            // if (($flight['flight_icao'] ?? '') == $searchQuery) {
+            //     $flightsArray[] = new FetchedFlight($flight);
+            // }
+            $flightsArray[] = new FetchedFlight($flight);
+
+        }
+  
+        // make a collection out of arrays
+        $flights = new Collection($flightsArray);
+        // at this point, we have the same thing as if we retrieved the flights from DB
+        // using the below statement
+        // $flights = FetchedFlight::get();
+
+        $flights->load('arrivalAirport:icao_code,name');
+        // at this point, we have the same thing as if we retrieved the flights from DB
+        // using the below statement
+        // $flights = FetchedFlight::with('arrivalAirport:icao_code,name')->get();
+        $flights->load('depatureAirport:icao_code,name');
+      
+        $flights->load('airlineName:icao_code,name');
+
+
+        $filteredFlights = $flights->filter(function ($flight) use ($request) {
+            
+            // $matchesDepartureAirport = ($flight->depatureAirport->name ?? false) === $searchQuery;
+            $matchesArrivalAirport =  str_contains(strtolower($flight->arrivalAirport->name ?? ''), strtolower($request->input('arrival')));
+            $matchesDepartureAirport = str_contains(strtolower($flight->depatureAirport->name ?? ''), strtolower($request->input('departure')));
+            // $matchesArrivalAirport = ($flight->arrivalAirport->name ?? false) === $searchQuery;
+            // $matchesFlightNumberIcao = ($flight->flight_icao ?? '') === $arrivalQuery;
+            // $matchesFlightNumber = ($flight->flight_number ?? '') === $arrivalQuery;
+
+            $isInFuture = true;
+
+            $filterPassed = ($matchesArrivalAirport && $matchesDepartureAirport) && $isInFuture;
 
             return $filterPassed;
         });
