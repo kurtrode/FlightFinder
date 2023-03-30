@@ -16,7 +16,7 @@ const options = {
   headers: {
     'content-type': 'application/x-www-form-urlencoded',
     Authorization: 'Bearer fQ98oU704xFvsnXcQLVDbpeCJHPglG1DcxiMLKfpeNEMGumlbzVf1lCI6ZBx',
-    'X-RapidAPI-Key': 'ff11e50708msh8107b98312c4760p171694jsn7e6cc0d3480f',
+    'X-RapidAPI-Key': '532b560b93mshdd36715d95159c9p1e71c5jsnef8b0dda332b',
     'X-RapidAPI-Host': 'carbonsutra1.p.rapidapi.com'
   },
   data: encodedParams
@@ -24,7 +24,7 @@ const options = {
 async function fetchEmissions(){
     const response = await axios.request(options);
     
-    // console.log(response.data.data);
+    console.log(response.data.data);
     setEmissions(response.data.data);
     console.log(emissions);
 }
@@ -33,8 +33,8 @@ useEffect(()=>{
 },[arrIata,depIata])
 
 return(
-    <>
-       <h3>{emissions.co2e_kg} kg of CO2 from {emissions.airport_from} to {emissions.airport_to}</h3>
+    <>{depIata ?
+       <h3>{emissions.co2e_kg} kg of CO2 will be emitted per passenger during the flight from {emissions.airport_from} to {emissions.airport_to}</h3>:""}
         </>
 )
 

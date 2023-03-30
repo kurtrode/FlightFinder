@@ -28,6 +28,9 @@ function App() {
   const [depIcao, setDepIcao] = useState('');
   const [arrName, setArrName] = useState('');
   const [depName, setDepName] = useState('');
+  const [lat,setLat] = useState(null);
+  const [lng,setLng] = useState(null);
+  const [flight,setFlight] = useState({});
 
 
   const getUserInformation = async () => {
@@ -54,7 +57,7 @@ function App() {
     return (
 
       <>
-      <UserContext.Provider value={ { getUserInformation,depIata,setDepIata,arrIata,setArrIata,arrIcao,setArrIcao,depIcao,setDepIcao,arrName,setArrName,depName,setDepName } }>
+      <UserContext.Provider value={ { getUserInformation,depIata,setDepIata,arrIata,setArrIata,arrIcao,setArrIcao,depIcao,setDepIcao,arrName,setArrName,depName,setDepName,lat,setLat,lng,setLng,flight,setFlight} }>
         <BrowserRouter>
 
           < Navigation user={user} />

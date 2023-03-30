@@ -6,6 +6,7 @@ import Logout from './Logout'
 import './Navigation.css'
 
 import NearbyCities from './NearbyCities';
+import './Navigation.css';
 
 
 
