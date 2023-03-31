@@ -27,6 +27,7 @@ Route::get('/fetch-departure/{departQuery}', [FlightSearchController::class, 'fe
 Route::get('/fetch-arrival/{arriveQuery}', [FlightSearchController::class, 'fetchArrival']);
 Route::get('/fetch-travel',[FlightSearchController::class, 'fetchTravel']);
 Route::get('/search',[FlightSearchController::class, 'fetchFlightsData']);
+Route::get('/fetch-number/{travelQuery}',[FlightSearchController::class, 'fetchNumber']);
 Route::get('/emissions', [FlightSearchController::class, 'emisisons']);
 Route::get('/database',[FlightSearchController::class, 'databaseCall']);
 // Route::post('/login', [RegisterController::class, 'login'])->name('login');
