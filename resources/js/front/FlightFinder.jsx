@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import UserContext from "./UserContext";
+import axios from 'axios';
 import './FlightFinder.css';
 
 
@@ -12,12 +13,66 @@ export default function FlightFinder (){
     const [searchQuery, setSearchQuery] = useState("");
     const [departQuery, setDepartQuery] = useState("");
     const [arrivalQuery, setArrivalQuery] = useState("");
-        const [airlines, setAirlines] = useState([]);
-       const [departValue, setDepartValue] = useState("");
-       const [arrivalValue, setArrivalValue] = useState("");
-        const [inputValue, setInputValue] = useState("");
-        const[travelQuery,setTravelQuery] = useState([]);
-        const[multiSearchInput,setMultiSearchInput]= useState({});
+    const [airlines, setAirlines] = useState([]);
+    const [departValue, setDepartValue] = useState("");
+    const [arrivalValue, setArrivalValue] = useState("");
+    const [inputValue, setInputValue] = useState("");
+    const [travelQuery,setTravelQuery] = useState([]);
+    const [multiSearchInput,setMultiSearchInput]= useState({});
+
+
+    // ------- ------- ------- ------- ------- ------- -------
+
+    // here is a state of weather a city:
+
+    const[ weatherData, setWeatherData] = useState({})
+    const[city, setCity] = useState('')
+
+    // ------- ------- ------- ------- ------- ------- -------
+
+    // here is a const for weather:
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=c97a46a679a747936540aa8b97b5ad40`
+
+
+    // ------- ------- ------- ------- ------- ------- -------
+
+
+    // here is a function chain:
+
+    const handleSearch = () => {
+
+       search();
+      
+    };
+
+    const search = async() => {
+    const response = await axios.get(url);
+ 
+     setWeatherData(response.data);
+     console.log(weatherData)
+    };
+
+    //  const handleRedirect = () => {
+
+    //  if(Object.keys(weatherData).length > 0) {
+    //   console.log(weatherData)
+    //   return <Navigate to={{ pathname: '/results', state: {data: weatherData} }} />;
+    //   console.log( " JSEM REDIRECT ")
+    //   } else {
+    //   return console.log(" JSEM NEPOVEDENÝ REDIRECT ");
+    //   }
+    //  };
+
+    //   const handleKeyPress = (event) => {
+    //   if (event.key === 'Enter') {
+    //     handleSearch();
+    //   }
+    //  }
+
+
+
+
+    // ------- ------- ------- ------- ------- ------- -------
 
     async function fetchData() {
         
@@ -76,8 +131,15 @@ export default function FlightFinder (){
         console.log(inputValue) 
     }
     const handleMultiSearch = (e) => {
-        setMultiSearchInput({...multiSearchInput,[e.target.name]: e.target.value}) 
+        setMultiSearchInput({...multiSearchInput,[e.target.name]: e.target.value})
+        setCity(e.target.value)
         console.log({[e.target.name]: e.target.value}) 
+    }
+
+    const handleCombinedSearch = (e) => {
+        setMultiSearchInput({...multiSearchInput,[e.target.name]: e.target.value});
+
+     
     }
     
     
@@ -103,10 +165,13 @@ return(
 
          <input type="text"  placeholder="Arrival Airport" className="flight-search" onChange={handleChange}   />
         <button onClick={() => {setArrivalQuery(inputValue),console.log(inputValue)}} className="flight-s-button">Search</button>
+
+        {/* this should be the input field for search flight and weather : */}
+        
         <form>
             <input type="text" name="departure" placeholder="Departure Airport" className="flight-search" onChange={handleMultiSearch} />
             <input type="text" name="arrival" placeholder="Arrival Airport" className="flight-search" onChange={handleMultiSearch}/>
-            <button type="submit" onClick={(e)=>{multiSearch(e)}}>Send</button>
+            <button type="submit" onClick={(e)=>{multiSearch(e); search(e); }} className="flight-s-button">Send</button>
         </form>
 
         {/* <input type="text"  placeholder="Departure Airport" className="flight-search" onChange={handleChange}   />
@@ -133,22 +198,31 @@ return(
                 airlines.map((airline, index)=>
                 <ul
                     key= { index }
+                    className="mp-results"
                     >
                     <Link to="/container"  onClick={()=>{setArrIata(airline.arr_iata);setDepIata(airline.dep_iata);setArrIcao(airline.dep_icao);setDepIcao(airline.dep_icao);setArrName(airline.arrival_airport.name);setDepName(airline.depature_airport.name);setFlight(airline)}}>
                     <div className="aircraft_details">
 
                        
-                        {(airline && airline.flight_icao) ? <p>Flight number: {airline.flight_icao}</p>
+                        {(airline && airline.flight_icao) ? <p className="mp-subresults">Flight number: {airline.flight_icao}</p>
                         :
                         "no number"}
                       
                         
-                        {(airline && airline.depature_airport && airline.depature_airport.name) ? <p> Departure: {airline.depature_airport.name}</p>
+                        {(airline && airline.depature_airport && airline.depature_airport.name) ? <p className="mp-subresults"> Departure: {airline.depature_airport.name}</p>
                         :
                         "no depature"}
-                        {(airline && airline.arrival_airport && airline.arrival_airport.name) ? <p> Arrival: {airline.arrival_airport.name}</p>
+                        {(airline && airline.arrival_airport && airline.arrival_airport.name) ? <p className="mp-subresults"> Arrival: {airline.arrival_airport.name}</p>
                         :
                         "no arrival"}
+                    
+                </div>
+
+                <div>
+                        {weatherData.weather? <p> {weatherData.weather[0].main}</p> : null}
+                        {weatherData.main ? <p> {weatherData.main.temp} K </p> : null } 
+
+
                          
                           
                         {/* <p>Aircraft type: {airline.aircraft_icao ? airline.aircraft_icao

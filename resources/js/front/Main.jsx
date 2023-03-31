@@ -25,14 +25,14 @@ export default function Main({user}) {
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=c97a46a679a747936540aa8b97b5ad40`
 
     const handleSearch = () => {
-      // if (event.key === 'Enter') {
+
         search();
-      // }
+      
     };
 
     const search = async() => {
       const response = await axios.get(url);
-      // handleRedirect();
+ 
       setWeatherData(response.data);
     };
 
