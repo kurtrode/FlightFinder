@@ -272,3 +272,16 @@ body {
 .weather-header {
   margin-bottom: 4rem;
 }
+
+.link{
+  display: flex;
+  flex-direction: row;
+}
+
+.biggerLink{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-left:40%;
+  margin-right:40%;
+}
