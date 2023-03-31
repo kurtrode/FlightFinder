@@ -255,3 +255,20 @@ body {
   justify-content: center;
   align-items: center;
 }
+
+.flight-status {
+  font-size: 4rem;
+}
+
+.p-text {
+  font-size: 1.25rem;
+}
+
+.check-weather {
+  font-size: 2rem;
+  margin-bottom: 4rem;
+}
+
+.weather-header {
+  margin-bottom: 4rem;
+}

@@ -16,8 +16,10 @@ const temp = receivedData.main.temp - 273.15;
 
         <div className="top">
 
+            <h1 className="weather-header">The weather in {receivedData.name}:</h1>
+{/* 
             <div className="location">Location:</div>
-            <p> <strong>{receivedData.name} </strong></p>
+            <p> <strong>{receivedData.name} </strong></p> */}
             <div className="temperature">Temperature:</div>
             { receivedData.main ? <p> <strong> {temp.toFixed(2)}  &#8451; </strong></p> : null }
             <div className="description">Weather:</div>
