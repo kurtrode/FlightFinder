@@ -39,11 +39,7 @@ export default function FlightFinder (){
 
     // here is a function chain:
 
-    const handleSearch = () => {
-
-       search();
-      
-    };
+ 
 
     const search = async() => {
     const response = await axios.get(url);
@@ -51,6 +47,11 @@ export default function FlightFinder (){
      setWeatherData(response.data);
      console.log(weatherData)
     };
+    const handleSearch = () => {
+
+        search();
+       
+     };
 
     //  const handleRedirect = () => {
 
@@ -124,6 +125,8 @@ export default function FlightFinder (){
 
                
     }
+    // const temp = weatherData.main.temp - 273.15;
+    // console.log(weatherData.main.temp);
     
 
     const handleChange = (e) => {
@@ -152,8 +155,8 @@ export default function FlightFinder (){
     useEffect(()=>{
         fetchArrive();
     }, [arrivalQuery])
- 
 
+ 
 return(
     <div className="flight">
         <h1>Flight status</h1>
@@ -219,8 +222,9 @@ return(
                 </div>
 
                 <div className="weather-details">
-                        {weatherData.weather? <p> {weatherData.weather[0].main}</p> : null}
-                        {weatherData.main ? <p> {weatherData.main.temp} K </p> : null } 
+                    
+                        {(weatherData && weatherData.weather) ? <p> {weatherData.weather[0].main}</p> : null}
+                        {(weatherData && weatherData.main) ? <p> {weatherData.main.temp.toFixed(2) - 273.15} &#8451; </p> : null } 
 
 
                          
