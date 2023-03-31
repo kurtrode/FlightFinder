@@ -17,7 +17,7 @@ class FlightSearchController extends Controller
         // $searchString = $request->input('searchQuery');
         
         // fetch the flights data from API
-        $response = Http::get("https://airlabs.co/api/v9/flights?api_key=add866a8-32ef-4e81-b5a4-145620e6da18");
+        $response = Http::get("https://airlabs.co/api/v9/flights?api_key=703a0329-5efa-4ed6-b128-02772bb1eb2f");
 
         // read the response property of response as JSON (turns into array of associative arrays)
         $flightArrays = $response->json('response');
