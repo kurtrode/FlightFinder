@@ -31,10 +31,13 @@ async function fetchEmissions(){
 useEffect(()=>{
     fetchEmissions();
 },[arrIata,depIata])
+const dataStyle={
+    color: "blue"
+}
 
 return(
     <>{depIata ?
-       <h3>{emissions.co2e_kg} kg of CO2 will be emitted per passenger during the flight from {emissions.airport_from} to {emissions.airport_to}</h3>:""}
+       <h3 style={dataStyle}>{emissions.co2e_kg} kg of CO2 will be emitted per passenger during the flight from {emissions.airport_from} to {emissions.airport_to}</h3>:""}
         </>
 )
 

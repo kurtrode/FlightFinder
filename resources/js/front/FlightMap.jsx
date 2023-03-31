@@ -11,7 +11,7 @@ import UserContext from "./UserContext"
 
 export default function FlightMap(){
     const {lat,lng} = useState(UserContext);
-    const url = `http://www.flightradar24.com/simple_index.php?lat=${lat}&lon=${lng}`
+    const url = `http://www.flightradar24.com/simple_index.php?lat=50.05&lon=14.25`
 //     const [lat, setLat] = useState(null);
 // const [lng, setLng] = useState(null);
 // const [status, setStatus] = useState(null);

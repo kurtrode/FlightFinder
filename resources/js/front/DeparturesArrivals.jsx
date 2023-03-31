@@ -157,22 +157,22 @@ export default function FlightFinder (){
 return(
     <div className="flight">
         <h1>Flight status</h1>
-
+{/* 
         <input type="text"  placeholder="Flight #" className="flight-search" onChange={handleChange}   />
-        <button onClick={() => {setSearchQuery(inputValue),console.log(inputValue)}} className="flight-s-button">Search</button>
-        {/* <input type="text"  placeholder="Departure Airport" className="flight-search" onChange={handleChange}   />
+        <button onClick={() => {setSearchQuery(inputValue),console.log(inputValue)}} className="flight-s-button">Search</button> */}
+        <input type="text"  placeholder="Departure Airport" className="flight-search" onChange={handleChange}   />
         <button onClick={() => {setDepartQuery(inputValue),console.log(inputValue)}} className="flight-s-button">Search</button>
 
          <input type="text"  placeholder="Arrival Airport" className="flight-search" onChange={handleChange}   />
-        <button onClick={() => {setArrivalQuery(inputValue),console.log(inputValue)}} className="flight-s-button">Search</button> */}
+        <button onClick={() => {setArrivalQuery(inputValue),console.log(inputValue)}} className="flight-s-button">Search</button>
 
         {/* this should be the input field for search flight and weather : */}
         
-        <form>
+        {/* <form>
             <input type="text" name="departure" placeholder="Departure Airport" className="flight-search" onChange={handleMultiSearch} />
             <input type="text" name="arrival" placeholder="Arrival Airport" className="flight-search" onChange={handleMultiSearch}/>
             <button type="submit" onClick={(e)=>{multiSearch(e); search(e); }} className="flight-s-button">Send</button>
-        </form>
+        </form> */}
 
         {/* <input type="text"  placeholder="Departure Airport" className="flight-search" onChange={handleChange}   />
         <button onClick={() => {setDepartQuery(inputValue),console.log(inputValue)}} className="flight-s-button">Search</button>
