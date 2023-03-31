@@ -273,6 +273,7 @@ body {
   margin-bottom: 4rem;
 }
 
+
 .result {
   box-sizing: border-box;
   margin: 2rem;
@@ -308,4 +309,17 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+
+.link{
+  display: flex;
+  flex-direction: row;
+}
+
+.biggerLink{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-left:40%;
+  margin-right:40%;
+
 }

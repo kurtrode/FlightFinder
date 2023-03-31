@@ -17,7 +17,7 @@ export default function FlightFinder (){
     const [departValue, setDepartValue] = useState("");
     const [arrivalValue, setArrivalValue] = useState("");
     const [inputValue, setInputValue] = useState("");
-    const [travelQuery,setTravelQuery] = useState([]);
+    const [travelQuery,setTravelQuery] = useState("");
     const [multiSearchInput,setMultiSearchInput]= useState({});
 
 
@@ -39,11 +39,7 @@ export default function FlightFinder (){
 
     // here is a function chain:
 
-    const handleSearch = () => {
-
-       search();
-      
-    };
+ 
 
     const search = async() => {
     const response = await axios.get(url);
@@ -51,6 +47,11 @@ export default function FlightFinder (){
      setWeatherData(response.data);
      console.log(weatherData)
     };
+    const handleSearch = () => {
+
+        search();
+       
+     };
 
     //  const handleRedirect = () => {
 
@@ -124,10 +125,20 @@ export default function FlightFinder (){
 
                
     }
+    async function fetchNumber(){
+        const response = await fetch(`/api/fetch-number/${travelQuery}`);
+        const data = await response.json();
+        setAirlines(data);
+    }
+    // const temp = weatherData.main.temp - 273.15;
+    // console.log(weatherData.main.temp);
     
-
+const numberChange = (e)=>{
+    setTravelQuery(e.target.value) 
+        console.log(travelQuery)
+}
     const handleChange = (e) => {
-        setInputValue(e.target.value) 
+        setinputValue(e.target.value) 
         console.log(inputValue) 
     }
     const handleMultiSearch = (e) => {
@@ -150,16 +161,16 @@ export default function FlightFinder (){
         fetchDepart();
     }, [departQuery])
     useEffect(()=>{
-        fetchArrive();
-    }, [arrivalQuery])
- 
+        fetchNumber();
+    }, [travelQuery])
 
+ 
 return(
     <div className="flight">
        
 
-        <input type="text"  placeholder="Flight #" className="flight-search" onChange={handleChange}   />
-        <button onClick={() => {setSearchQuery(inputValue),console.log(inputValue)}} className="flight-s-button">Search</button>
+        {/* <input type="text"  placeholder="Flight #" className="flight-search" onChange={handleChange}   />
+        <button onClick={() => {setTravelQuery(inputValue),console.log(inputValue)}} className="flight-s-button">Search</button> */}
         {/* <input type="text"  placeholder="Departure Airport" className="flight-search" onChange={handleChange}   />
         <button onClick={() => {setDepartQuery(inputValue),console.log(inputValue)}} className="flight-s-button">Search</button>
 
@@ -219,8 +230,9 @@ return(
                 </div>
 
                 <div className="weather-details">
-                        {weatherData.weather? <p> {weatherData.weather[0].main}</p> : null}
-                        {weatherData.main ? <p> {weatherData.main.temp} K </p> : null } 
+                    
+                        {(weatherData && weatherData.weather) ? <p> {weatherData.weather[0].main}</p> : null}
+                        {(weatherData && weatherData.main) ? <p> {weatherData.main.temp.toFixed(2) - 273.15} &#8451; </p> : null } 
 
 
                          

@@ -16,7 +16,7 @@ const options = {
   headers: {
     'content-type': 'application/x-www-form-urlencoded',
     Authorization: 'Bearer fQ98oU704xFvsnXcQLVDbpeCJHPglG1DcxiMLKfpeNEMGumlbzVf1lCI6ZBx',
-    'X-RapidAPI-Key': '532b560b93mshdd36715d95159c9p1e71c5jsnef8b0dda332b',
+    'X-RapidAPI-Key': '2418b8b6c9mshe72b3bd263cbb21p1ffa0fjsna6db9134feaf',
     'X-RapidAPI-Host': 'carbonsutra1.p.rapidapi.com'
   },
   data: encodedParams
