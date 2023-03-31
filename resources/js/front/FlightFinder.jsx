@@ -218,7 +218,7 @@ return(
                     
                 </div>
 
-                <div>
+                <div className="weather-details">
                         {weatherData.weather? <p> {weatherData.weather[0].main}</p> : null}
                         {weatherData.main ? <p> {weatherData.main.temp} K </p> : null } 
 

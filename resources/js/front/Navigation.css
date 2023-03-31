@@ -14,6 +14,13 @@ body {
   box-sizing: border-box;
 }
 
+a {
+  font-weight: 500;
+  color: white;
+  text-decoration: inherit;
+  display: flex;
+}
+
 .navigation-bar {
   margin: 27px auto 0;
   display: flex;
@@ -27,7 +34,7 @@ body {
   margin-top: 0;
 }
 
-.navigation-bar a {
+.navigation-bar .a {
   line-height: 60px;
   height: 100%;
   font-size: 15px;
@@ -39,6 +46,26 @@ body {
   text-align: center;
   color: white;
   cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  margin: 10px;
+}
+
+.navigation-bar .b {
+  line-height: 60px;
+  height: 100%;
+  font-size: 15px;
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+  text-decoration: none;
+  text-transform: uppercase;
+  text-align: center;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  margin: 10px;
 }
 
 /* 
@@ -51,30 +78,34 @@ body {
   border-radius: 8px;
 } */
 
-a:nth-child(1) {
+/* a:nth-child(1) {
   width: 100px;
 }
 
 a:nth-child(2) {
   width: 110px;
-}
+} */
 
 /* a:nth-child(3) {
   width: 100px;
 } */
-
+/* 
 a:nth-child(4) {
   width: 160px;
 }
 
 a:nth-child(5) {
   width: 120px;
-}
+} */
 
 .a:hover {
   text-decoration: none;
   color: white;
 }
+
+/* .a {
+  width: 100px;
+} */
 
 /* .navigation-bar .start-home,
 a:nth-child(1):hover~.animation {

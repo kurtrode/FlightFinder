@@ -126,14 +126,32 @@ body {
 }
 
 .logout-btn {
-  color: white;
+  /* color: white;
   background-color: white;
   margin-right: 0.3rem;
-  margin-top: 0.6rem;
+  margin-top: 1rem;
   padding: 0.03 rem;
   cursor: pointer;
   border-radius: 10px;
+  font-size: 15px; */
+
+  line-height: 60px;
+  height: 100%;
   font-size: 15px;
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+  text-decoration: none;
+  text-transform: uppercase;
+  text-align: center;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  margin: 10px;
+  padding: 0;
+
+
 
   background: none;
   border: none;
@@ -163,6 +181,11 @@ body {
   margin: 3px;
 }
 
+.flight-routes p:hover {
+  text-decoration: none;
+  color: rgb(204, 194, 194);
+}
+
 .weather-input {
   margin: 0.3rem 0;
   padding: 0.5rem;
@@ -175,14 +198,60 @@ body {
 }
 
 .mp-results {
+  /* display: flex;
+  flex-direction: column;
+  margin: 5px;
+  border: 1px solid white;
+  border-radius: 4px;
+  text-align: center; */
+
+  display: flex;
+  flex-direction: row;
+  margin: 1rem;
+  padding: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.mp-results p {
+  color: white;
+  text-align: center;
+  width: 100%;
+
+}
+
+.mp-results p:hover {
+  text-decoration: none;
+  color: rgb(204, 194, 194);
+}
+
+.mp-subresults {
+  text-align: left;
+  width: 100%;
+}
+
+.weather-details {
   display: flex;
   flex-direction: column;
   margin: 5px;
   border: 1px solid white;
   border-radius: 4px;
   text-align: center;
+  width: 50%;
+  padding: 0.5rem;
+  justify-content: center;
+  align-items: center;
 }
 
-.mp-results p {
+.aircraft_details {
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+  border: 1px solid white;
+  border-radius: 4px;
   text-align: center;
+  width: 50%;
+  padding: 0.5rem;
+  justify-content: center;
+  align-items: center;
 }
