@@ -15,15 +15,15 @@ export default function LocationContainer(){
     
 return(<><div className="result">
     {console.log(flight)}
-    <h3>This flight departs from {flight.depature_airport.name ?? "Not defined"}.</h3>
-    <h3>It arrives at {flight.arrival_airport.name ?? "Not defined"}.</h3>
-    <h3>The flight number is {flight.flight_number ?? "Not defined"} and the ICAO code is {flight.flight_icao ?? "Not defined"}.</h3>
+    <h3>This flight departs from <strong>{flight.depature_airport.name ?? "Not defined"}</strong>.</h3>
+    <h3>It arrives at <strong>{flight.arrival_airport.name ?? "Not defined"}.</strong></h3>
+    <h3>The flight number is <strong>{flight.flight_number ?? "Not defined"}</strong> and the ICAO code is {flight.flight_icao ?? "Not defined"}.</h3>
     <h3>It's currently {flight.status} and flying at an altitude of {flight.alt} meters.</h3>
     {(depIata && weatherDepLat && weatherDepLng) ? <WeatherAttDep depIata={depIata} weatherDepLat={weatherDepLat} weatherDepLng={weatherDepLng}/> : null}
     {console.log([depIata,weatherDepLat,weatherDepLng])}
     {<NearbyCities/>}
 </div>
-<h3>View flights from your plane's location here:</h3>
-<div><FlightMap/></div>
+{/* <h3>View flights from your plane's location here:</h3> */}
+{/* <div><FlightMap/></div> */}
     <div></div></>)
 }

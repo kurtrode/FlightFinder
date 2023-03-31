@@ -37,7 +37,10 @@ const dataStyle={
 
 return(
     <>{depIata ?
-       <h3 style={dataStyle}>{emissions.co2e_kg} kg of CO2 will be emitted per passenger during the flight from {emissions.airport_from} to {emissions.airport_to}</h3>:""}
+       <h3 className="emission-header"
+        // style={dataStyle}
+        >
+        <strong>{emissions.co2e_kg}</strong> kg of CO2 will be emitted per passenger during the flight from {emissions.airport_from} to {emissions.airport_to}</h3>:""}
         </>
 )
 

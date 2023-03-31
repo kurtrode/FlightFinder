@@ -1,4 +1,5 @@
 import React, { useContext } from 'react'
+import { Link } from "react-router-dom";
 
 import UserContext from './UserContext';
 
@@ -16,17 +17,21 @@ const temp = receivedData.main.temp - 273.15;
 
         <div className="top">
 
+
             <h1 className="weather-header">The weather in {receivedData.name}:</h1>
 {/* 
             <div className="location">Location:</div>
-            <p> <strong>{receivedData.name} </strong></p> */}
+          <p> <strong>{receivedData.name} </strong></p> */}
             <div className="temperature">Temperature:</div>
             { receivedData.main ? <p> <strong> {temp.toFixed(2)}  &#8451; </strong></p> : null }
             <div className="description">Weather:</div>
              {receivedData.weather? <p> <strong> {receivedData.weather[0].main} </strong></p> : null}
             
+             {/* <Link to="/weather"> <button className="button">back to home</button> </Link> */}
         </div>
 
+        <div className="home-button">
+        </div>
     </div>
   )
 }
