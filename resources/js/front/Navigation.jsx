@@ -30,7 +30,7 @@ export default function Navigation({user}) {
             <NearbyCities/>
 
 
-            <div>
+            <div className="b">
         
                   {
                     user === false
