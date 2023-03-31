@@ -49,7 +49,7 @@ export default function FlightMap(){
     //     console.log(coords.latitude);
     return(
         
-        <div className="flightmap"><iframe src={url} className="flightmap_map" width={400} height={300}></iframe></div> 
+        <div className="flightmap"><iframe src={url} className="flightmap_map" width={600} height={400}></iframe></div> 
     
     )
 }

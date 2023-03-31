@@ -16,6 +16,8 @@ export default function FlightFinder (){
        const [departValue, setDepartValue] = useState("");
        const [arrivalValue, setArrivalValue] = useState("");
         const [inputValue, setInputValue] = useState("");
+        const[travelQuery,setTravelQuery] = useState([]);
+        const[multiSearchInput,setMultiSearchInput]= useState({});
 
     async function fetchData() {
         
@@ -53,11 +55,29 @@ export default function FlightFinder (){
 
                
     }
+    async function multiSearch(e) {
+        e.preventDefault();
+        
+        const response = await fetch(`/api/search?arrival=${multiSearchInput.arrival}&departure=${multiSearchInput.departure}`);  
+  
+
+        const data = await response.json();
+        console.log(data);
+
+        setAirlines(data);
+        // console.log(airlines);
+
+               
+    }
     
 
     const handleChange = (e) => {
         setInputValue(e.target.value) 
         console.log(inputValue) 
+    }
+    const handleMultiSearch = (e) => {
+        setMultiSearchInput({...multiSearchInput,[e.target.name]: e.target.value}) 
+        console.log({[e.target.name]: e.target.value}) 
     }
     
     
@@ -78,12 +98,22 @@ return(
 
         <input type="text"  placeholder="Flight #" className="flight-search" onChange={handleChange}   />
         <button onClick={() => {setSearchQuery(inputValue),console.log(inputValue)}} className="flight-s-button">Search</button>
-
         <input type="text"  placeholder="Departure Airport" className="flight-search" onChange={handleChange}   />
         <button onClick={() => {setDepartQuery(inputValue),console.log(inputValue)}} className="flight-s-button">Search</button>
 
          <input type="text"  placeholder="Arrival Airport" className="flight-search" onChange={handleChange}   />
         <button onClick={() => {setArrivalQuery(inputValue),console.log(inputValue)}} className="flight-s-button">Search</button>
+        <form>
+            <input type="text" name="departure" placeholder="Departure Airport" className="flight-search" onChange={handleMultiSearch} />
+            <input type="text" name="arrival" placeholder="Arrival Airport" className="flight-search" onChange={handleMultiSearch}/>
+            <button type="submit" onClick={(e)=>{multiSearch(e)}}>Send</button>
+        </form>
+
+        {/* <input type="text"  placeholder="Departure Airport" className="flight-search" onChange={handleChange}   />
+        <button onClick={() => {setDepartQuery(inputValue),console.log(inputValue)}} className="flight-s-button">Search</button>
+
+         <input type="text"  placeholder="Arrival Airport" className="flight-search" onChange={handleChange}   />
+        <button onClick={() => {setArrivalQuery(inputValue),console.log(inputValue)}} className="flight-s-button">Search</button> */}
 
 {/*        
         <input type="text"  placeholder="Depature airport"className="Search" onChange={handleChange}   />
@@ -108,15 +138,15 @@ return(
                     <div className="aircraft_details">
 
                        
-                        {airline.flight_icao ? <p>Flight number: {airline.flight_icao}</p>
+                        {(airline && airline.flight_icao) ? <p>Flight number: {airline.flight_icao}</p>
                         :
                         "no number"}
                       
                         
-                        {airline.depature_airport.name ? <p> Departure: {airline.depature_airport.name}</p>
+                        {(airline && airline.depature_airport && airline.depature_airport.name) ? <p> Departure: {airline.depature_airport.name}</p>
                         :
                         "no depature"}
-                        {airline.arrival_airport.name ? <p> Arrival: {airline.arrival_airport.name}</p>
+                        {(airline && airline.arrival_airport && airline.arrival_airport.name) ? <p> Arrival: {airline.arrival_airport.name}</p>
                         :
                         "no arrival"}
                          

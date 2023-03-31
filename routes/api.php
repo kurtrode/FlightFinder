@@ -25,6 +25,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/fetch-flights/{searchQuery}', [FlightSearchController::class, 'fetchFlightsData']);
 Route::get('/fetch-departure/{departQuery}', [FlightSearchController::class, 'fetchDeparture']);
 Route::get('/fetch-arrival/{arriveQuery}', [FlightSearchController::class, 'fetchArrival']);
+Route::get('/fetch-travel',[FlightSearchController::class, 'fetchTravel']);
+Route::get('/search',[FlightSearchController::class, 'fetchFlightsData']);
 Route::get('/emissions', [FlightSearchController::class, 'emisisons']);
 Route::get('/database',[FlightSearchController::class, 'databaseCall']);
 // Route::post('/login', [RegisterController::class, 'login'])->name('login');

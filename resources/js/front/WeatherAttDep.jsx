@@ -6,7 +6,7 @@ import UserContext from './UserContext';
 
 export default function WeatherAttDep(props) {
     // const{depIata}= useState(UserContext);
-    const{weatherDepLat,weatherDepLng} = useContext(UserContext);
+    // const{weatherDepLat,weatherDepLng} = useContext(UserContext);
 
     const[ weatherData, setWeatherData] = useState({})
     const[city, setCity] = useState('')
