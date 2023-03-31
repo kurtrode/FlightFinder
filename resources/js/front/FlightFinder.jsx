@@ -17,7 +17,7 @@ export default function FlightFinder (){
     const [departValue, setDepartValue] = useState("");
     const [arrivalValue, setArrivalValue] = useState("");
     const [inputValue, setInputValue] = useState("");
-    const [travelQuery,setTravelQuery] = useState([]);
+    const [travelQuery,setTravelQuery] = useState("");
     const [multiSearchInput,setMultiSearchInput]= useState({});
 
 
@@ -125,12 +125,20 @@ export default function FlightFinder (){
 
                
     }
+    async function fetchNumber(){
+        const response = await fetch(`/api/fetch-number/${travelQuery}`);
+        const data = await response.json();
+        setAirlines(data);
+    }
     // const temp = weatherData.main.temp - 273.15;
     // console.log(weatherData.main.temp);
     
-
+const numberChange = (e)=>{
+    setTravelQuery(e.target.value) 
+        console.log(travelQuery)
+}
     const handleChange = (e) => {
-        setInputValue(e.target.value) 
+        setinputValue(e.target.value) 
         console.log(inputValue) 
     }
     const handleMultiSearch = (e) => {
@@ -153,16 +161,16 @@ export default function FlightFinder (){
         fetchDepart();
     }, [departQuery])
     useEffect(()=>{
-        fetchArrive();
-    }, [arrivalQuery])
+        fetchNumber();
+    }, [travelQuery])
 
  
 return(
     <div className="flight">
        
 
-        <input type="text"  placeholder="Flight #" className="flight-search" onChange={handleChange}   />
-        <button onClick={() => {setSearchQuery(inputValue),console.log(inputValue)}} className="flight-s-button">Search</button>
+        {/* <input type="text"  placeholder="Flight #" className="flight-search" onChange={handleChange}   />
+        <button onClick={() => {setTravelQuery(inputValue),console.log(inputValue)}} className="flight-s-button">Search</button> */}
         {/* <input type="text"  placeholder="Departure Airport" className="flight-search" onChange={handleChange}   />
         <button onClick={() => {setDepartQuery(inputValue),console.log(inputValue)}} className="flight-s-button">Search</button>
 
