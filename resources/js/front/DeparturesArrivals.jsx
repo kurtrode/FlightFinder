@@ -156,15 +156,23 @@ export default function FlightFinder (){
 
 return(
     <div className="flight">
-        <h1>Flight status</h1>
+      <p>Find your...</p>
 {/* 
         <input type="text"  placeholder="Flight #" className="flight-search" onChange={handleChange}   />
         <button onClick={() => {setSearchQuery(inputValue),console.log(inputValue)}} className="flight-s-button">Search</button> */}
-        <input type="text"  placeholder="Departure Airport" className="flight-search" onChange={handleChange}   />
-        <button onClick={() => {setDepartQuery(inputValue),console.log(inputValue)}} className="flight-s-button">Search</button>
 
-         <input type="text"  placeholder="Arrival Airport" className="flight-search" onChange={handleChange}   />
-        <button onClick={() => {setArrivalQuery(inputValue),console.log(inputValue)}} className="flight-s-button">Search</button>
+
+        <div className="find-flight">
+            <p className="p-text">flights from departure airport</p>
+            <input type="text"  placeholder="Departures from " className="flight-search departures" onChange={handleChange}   />
+            <button onClick={() => {setDepartQuery(inputValue),console.log(inputValue)}} className="flight-s-button">Search</button>
+        </div>
+
+         <div className="find-flight">
+            <p className="p-text">.. Or check for arrivals at selected airport!</p>
+            <input type="text"  placeholder="Arrivals from" className="flight-search arrivals" onChange={handleChange}   />
+            <button onClick={() => {setArrivalQuery(inputValue),console.log(inputValue)}} className="flight-s-button">Search</button>
+         </div>
 
         {/* this should be the input field for search flight and weather : */}
         

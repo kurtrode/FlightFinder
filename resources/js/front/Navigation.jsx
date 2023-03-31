@@ -22,8 +22,8 @@ export default function Navigation({user}) {
             <div className="a">
 
                 <Link className="a" to="/" > Home</Link>
-                <Link className="a" to="/maps" >Weather</Link>
-                <Link className="a" to="/destinations" > Destinations</Link>      
+                <Link className="a" to="/weather" >Weather</Link>
+                <Link className="a" to="/destinations" > Flight Map</Link>      
                 <Link className="a" to="/flight" > Flight</Link>           
     
             </div>

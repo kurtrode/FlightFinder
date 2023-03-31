@@ -156,7 +156,7 @@ export default function FlightFinder (){
 
 return(
     <div className="flight">
-        <h1>Flight status</h1>
+       
 
         <input type="text"  placeholder="Flight #" className="flight-search" onChange={handleChange}   />
         <button onClick={() => {setSearchQuery(inputValue),console.log(inputValue)}} className="flight-s-button">Search</button>

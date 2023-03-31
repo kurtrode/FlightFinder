@@ -13,6 +13,8 @@ import axios from 'axios'
 import { Navigate } from 'react-router-dom';
 import LocationContainer from './LocationContainer';
 import Flights from "./Flights";
+import DeparturesArrivals from './DeparturesArrivals';
+import FlightMap from './FlightMap';
 
 
 export default function Main({user}) {
@@ -59,16 +61,17 @@ export default function Main({user}) {
 
         {/* visible to every user : */}
         
-         <Route path="/" element={ <h3 className="home-flight-finder">Welcome to Flight Finder < FlightFinder /> </h3>} />
-         <Route path="/maps" element={
+         <Route path="/" element={ <><h1 className="home-flight-finder">Welcome to Flight Finder!  </h1> <h2 className="flight-status">Flight status</h2>< FlightFinder /> </>} />
+         <Route path="/weather" element={
            
             <div className="search-container" >
-            <p>Check the weather in:</p>
+            <p className="check-weather">Check the weather in destination before the flight</p>
             <input className="weather-input"
                  type="text"
                  value={city}
                  onChange={event => setCity(event.target.value)}
-                 onKeyPress={handleKeyPress} />
+                 onKeyPress={handleKeyPress}
+                 placeholder="Enter the city here" />
           {Object.keys(weatherData).length > 0 ?  <Navigate to={{ pathname: '/results', state: {data: weatherData} }} /> : null }
             </div>
           } 
@@ -78,9 +81,9 @@ export default function Main({user}) {
 
         <Route path="/github" element={ <h1>Github</h1>} />
         <Route path="/linkedin" element={ <h1>LinkedIn </h1>} />
-        <Route path="/flight" element={ <h1>Future flights from Prague: <Flights /> </h1>} />
+        <Route path="/flight" element={ <h1> <DeparturesArrivals /> </h1>} />
         <Route path="/about-us" element={ <AboutUs/>} />
-        <Route path="/destinations" element={ <h1>Destinations </h1>} />
+        <Route path="/destinations" element={ <h1> <FlightMap /> </h1>} />
         <Route path="/searchresults" element={<SearchResults/>}/>
         {/* <Route path="/flight" element={ <FlightFinder /> } /> */}
         <Route path="/container" element={<LocationContainer/>}/>
