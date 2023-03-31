@@ -272,3 +272,40 @@ body {
 .weather-header {
   margin-bottom: 4rem;
 }
+
+.result {
+  box-sizing: border-box;
+  margin: 2rem;
+  padding: 4rem;
+  width: 75%;
+  margin: auto;
+  border: 1px solid white;
+  border-radius: 10px;
+}
+
+.result h3 {
+  color: white;
+  margin-bottom: 0.6rem;
+
+}
+
+.emission-header {
+  word-break: break-all;
+}
+
+.flightmap_map {
+  border-radius: 10px;
+  border: none;
+  box-shadow: 3px 3px 10px 3px rgb(236, 229, 229), -3px -3px 10px 3px rgb(238, 232, 232);
+
+}
+
+.flightmap_map:hover {
+  box-shadow: 4px 4px 10px 4px white, -4px -4px 10px 4px white;
+}
+
+.home-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
