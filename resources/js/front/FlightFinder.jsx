@@ -21,6 +21,7 @@ export default function FlightFinder (){
     const [multiSearchInput,setMultiSearchInput]= useState({});
 
 
+
     // ------- ------- ------- ------- ------- ------- -------
 
     // here is a state of weather a city:
@@ -230,9 +231,9 @@ return(
                 </div>
 
                 <div className="weather-details">
-                    
+                        {console.log((weatherData.main.temp - 273.15).toFixed(2))}
                         {(weatherData && weatherData.weather) ? <p> {weatherData.weather[0].main}</p> : null}
-                        {(weatherData && weatherData.main) ? <p> {weatherData.main.temp.toFixed(2) - 273.15} &#8451; </p> : null } 
+                        {(weatherData && weatherData.main) ? <p> {(weatherData.main.temp - 273.15).toFixed(2)} &#8451; </p> : null } 
 
 
                          

@@ -308,7 +308,7 @@ body {
 .home-button {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center;}
 
 .link{
   display: flex;
